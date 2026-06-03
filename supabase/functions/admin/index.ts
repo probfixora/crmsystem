@@ -64,7 +64,7 @@ serve(async (req) => {
       }
 
       // Generate default password and Employee ID
-      const password = "RBSCsolar@123";
+      const password = "probfixora@123";
       const employeeId = "EMP-" + Math.floor(1000 + Math.random() * 9000);
 
       // Create auth user
