@@ -29,13 +29,13 @@ const QuotationList = ({ onLogout }) => {
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {
-      const payload = { action: 'update_status', id, status: newStatus.toLowerCase() };
-      if (newStatus.toLowerCase() === 'approved' || newStatus.toLowerCase() === 'submitted') {
+      const payload = { action: 'update_status', id, status: newStatus };
+      if (newStatus === 'Approved' || newStatus === 'Submitted') {
         payload.currentDepartment = 'Sales';
       }
       await edgeFetch(EDGE.quotation, payload);
       setQuotations(prev => prev.map(q => (q.id === id || q._id === id) 
-        ? { ...q, status: newStatus.toLowerCase(), current_department: (newStatus.toLowerCase() === 'approved' || newStatus.toLowerCase() === 'submitted') ? 'Sales' : q.current_department } 
+        ? { ...q, status: newStatus, current_department: (newStatus === 'Approved' || newStatus === 'Submitted') ? 'Sales' : q.current_department } 
         : q));
       toast.success(`Status updated to ${newStatus}`);
     } catch (error) {
@@ -49,8 +49,10 @@ const QuotationList = ({ onLogout }) => {
     const qId = q.quotation_id || q.quotationId || '';
     const matchesSearch = custName.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           qId.toLowerCase().includes(searchTerm.toLowerCase());
-    const qStatus = q.status || '';
-    const matchesStatus = statusFilter === 'All' || qStatus.toLowerCase() === statusFilter.toLowerCase();
+    const qStatus = (q.status || '').toLowerCase();
+    const filterStatus = statusFilter.toLowerCase();
+    const matchesStatus = statusFilter === 'All' || qStatus === filterStatus || 
+                          (qStatus === 'draft' && filterStatus === 'draft');
     return matchesSearch && matchesStatus;
   });
 
@@ -63,8 +65,11 @@ const QuotationList = ({ onLogout }) => {
   };
 
   const getStatusBadge = (status) => {
-    const normalizedStatus = status ? status.charAt(0).toUpperCase() + status.slice(1).toLowerCase() : '';
-    const c = statusConfig[normalizedStatus] || statusConfig[status] || { bg: '#F1F5F9', color: '#475569', border: '#E2E8F0', Icon: Clock };
+    // Normalize: 'draft' -> 'Draft', 'submitted' -> 'Submitted', 'Submitted' -> 'Submitted'
+    const normalize = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1).toLowerCase() : '';
+    const normalized = normalize(status);
+    const c = statusConfig[normalized] || statusConfig[status] || { bg: '#F1F5F9', color: '#475569', border: '#E2E8F0', Icon: Clock };
+    const displayLabel = (status || '').toLowerCase() === 'registration completed' ? 'Approved' : normalized;
     return (
       <span style={{
         display: 'inline-flex', alignItems: 'center', gap: '5px',
@@ -73,7 +78,7 @@ const QuotationList = ({ onLogout }) => {
         border: `1px solid ${c.border}`,
       }}>
         <c.Icon style={{ width: '12px', height: '12px' }} />
-        {normalizedStatus === 'Registration completed' ? 'Approved' : normalizedStatus}
+        {displayLabel}
       </span>
     );
   };
@@ -180,7 +185,13 @@ const QuotationList = ({ onLogout }) => {
                           <Download style={{ width: '14px', height: '14px' }} />
                         </a>
                         <select
-                          value={q.status ? q.status.toLowerCase() : ''}
+                          value={(() => {
+                            const s = (q.status || '').toLowerCase();
+                            if (s === 'registration completed') return 'Approved';
+                            if (s === 'draft') return 'Draft';
+                            // capitalize first letter
+                            return (q.status || '').charAt(0).toUpperCase() + (q.status || '').slice(1).toLowerCase();
+                          })()}
                           onChange={e => handleUpdateStatus(q.id || q._id, e.target.value)}
                           className="input"
                           style={{
@@ -188,11 +199,11 @@ const QuotationList = ({ onLogout }) => {
                             fontWeight: 600, cursor: 'pointer',
                           }}
                         >
-                          {q.status?.toLowerCase() === 'draft' && <option value="draft">Draft</option>}
-                          <option value="submitted">Submitted</option>
-                          <option value="processing">Processing</option>
-                          <option value="approved">Approved</option>
-                          <option value="rejected">Rejected</option>
+                          {(q.status || '').toLowerCase() === 'draft' && <option value="Draft">Draft</option>}
+                          <option value="Submitted">Submitted</option>
+                          <option value="Processing">Processing</option>
+                          <option value="Approved">Approved</option>
+                          <option value="Rejected">Rejected</option>
                         </select>
                       </div>
                     </td>
