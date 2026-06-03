@@ -43,13 +43,14 @@ export async function edgeFetch(url, body) {
     // Only force-logout on genuine JWT expiry/invalidity (401 with JWT-specific message).
     // Normal RBAC 403s or validation 400s must NOT clear the session —
     // they should be handled by the calling component.
-    if (res.status === 401) {
-      const msg = (data.message || '').toLowerCase();
+    if (res.status === 401 || res.status === 403) {
+      const msg = (data.message || '').toLowerCase().trim();
       const isJwtError =
         msg.includes('invalid jwt') ||
         msg.includes('jwt expired') ||
         msg.includes('not authenticated') ||
-        msg.includes('token is expired');
+        msg.includes('token is expired') ||
+        msg === 'unauthorized';
       if (isJwtError) {
         console.warn('[edgeFetch] JWT expired — clearing session and redirecting to login.');
         supabase.auth.signOut().catch(() => {});
