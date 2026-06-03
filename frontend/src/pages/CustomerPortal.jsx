@@ -215,9 +215,9 @@ export default function CustomerPortal() {
         if (!file) continue;
         const sanitized = docName.replace(/[^a-zA-Z0-9]/g, '_');
         const fileName = `${quotationId}/${sanitized}_${Date.now()}.${file.name.split('.').pop()}`;
-        const { error: uploadError } = await supabase.storage.from('Documents').upload(fileName, file, { upsert: true });
+        const { error: uploadError } = await supabase.storage.from('documents').upload(fileName, file, { upsert: true });
         if (uploadError) throw uploadError;
-        const { data: urlData } = supabase.storage.from('Documents').getPublicUrl(fileName);
+        const { data: urlData } = supabase.storage.from('documents').getPublicUrl(fileName);
         uploadedDocs[docName] = urlData.publicUrl;
       }
 

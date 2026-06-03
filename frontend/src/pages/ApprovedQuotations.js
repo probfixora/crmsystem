@@ -100,9 +100,9 @@ const ApprovedQuotations = ({ onLogout }) => {
       const ext      = file.name.split('.').pop();
       const fileName = `${selectedQuotation.quotation_id}_${docName.replace(/\s+/g,'_')}_${Date.now()}.${ext}`;
       const filePath = `${selectedQuotation.quotation_id}/${fileName}`;
-      const { error } = await supabase.storage.from('Documents').upload(filePath, file);
+      const { error } = await supabase.storage.from('documents').upload(filePath, file);
       if (error) throw error;
-      const { data: urlData } = supabase.storage.from('Documents').getPublicUrl(filePath);
+      const { data: urlData } = supabase.storage.from('documents').getPublicUrl(filePath);
       const newDocs = { ...(selectedQuotation.documents || {}), [docName]: urlData.publicUrl };
       await edgeFetch(EDGE.quotation, { action: 'update_status', id: selectedQuotation.id, documents: newDocs });
       setSelected(prev => ({ ...prev, documents: newDocs }));
