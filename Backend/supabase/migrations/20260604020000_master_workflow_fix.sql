@@ -128,8 +128,15 @@ ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS project_completed_at TIMESTAMP
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS completed_by TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS geo_location TEXT DEFAULT '';
 
--- ─── STEP 7: Ensure profiles role constraint covers all departments ─
+-- ─── STEP 7: Ensure profiles role constraint covers exactly 12 departments ─
+-- Migrate any old legacy roles to the standard frontend names
+UPDATE public.profiles SET role = 'inventory' WHERE role = 'store';
+UPDATE public.profiles SET role = 'field_installation' WHERE role = 'installation';
+UPDATE public.profiles SET role = 'technical' WHERE role = 'technical_qa';
+UPDATE public.profiles SET role = 'accounts' WHERE role = 'accountant';
+
 ALTER TABLE public.profiles DROP CONSTRAINT IF EXISTS profiles_role_check;
+
 ALTER TABLE public.profiles
   ADD CONSTRAINT profiles_role_check
   CHECK (role IN (
@@ -137,16 +144,12 @@ ALTER TABLE public.profiles
     'sales',
     'registration',
     'banking',
-    'store',
     'inventory',
-    'installation',
     'field_installation',
     'electrical',
-    'technical',
-    'technical_qa',
-    'accounts',
-    'accountant',
     'subsidy',
+    'technical',
+    'accounts',
     'customer_service',
     'procurement'
   ));
