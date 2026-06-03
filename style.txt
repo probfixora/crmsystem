@@ -1,13 +1,13 @@
 PAGE 1
-RBSC                           Color: #ffa500 Size: 9.0 Font: DejaVuSans-Bold
-Associates                     Color: #008000 Size: 9.0 Font: DejaVuSans-Bold
+Probfixora                           Color: #ffa500 Size: 9.0 Font: DejaVuSans-Bold
+                     Color: #008000 Size: 9.0 Font: DejaVuSans-Bold
 Office no. 11, Bhopal House La Color: #000000 Size: 9.0 Font: DejaVuSans
 Hazratganj, Lucknow 226001, In Color: #000000 Size: 9.0 Font: DejaVuSans
 Email:                         Color: #000000 Size: 9.0 Font: DejaVuSans
-info@rbscsolar.com             Color: #0000cc Size: 9.0 Font: DejaVuSans
+info@Probfixora.co.in             Color: #0000cc Size: 9.0 Font: DejaVuSans
 | Web:                         Color: #000000 Size: 9.0 Font: DejaVuSans
-www.rbscsolar.com              Color: #0000cc Size: 9.0 Font: DejaVuSans
-Quotation No.: RBSC-25-04-2026 Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+www.Probfixora.co.in              Color: #0000cc Size: 9.0 Font: DejaVuSans
+Quotation No.: Probfixora-25-04-2026 Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
 Date: 25 Apr 2026              Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
 Luminous On Grid Solar Panel   Color: #000000 Size: 9.8 Font: DejaVuSans-Bold
 Customer Name:                 Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
@@ -17,7 +17,7 @@ Mobile No.:                    Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
 Address:                       Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
 Charbagh                       Color: #000000 Size: 8.2 Font: DejaVuSans
 Company Name:                  Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
-RBSC Associates                Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+Probfixora                       Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
 Address:                       Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
 Office no. 11, Bhopal House La Color: #000000 Size: 8.2 Font: DejaVuSans
 Hazratganj, Lucknow 226001, In Color: #000000 Size: 8.2 Font: DejaVuSans
@@ -87,13 +87,13 @@ Adani     /            ,   /   Color: #000000 Size: 8.2 Font: NotoSansDevanagari
 The Adani solar panel has been Color: #000000 Size: 8.2 Font: DejaVuSans
 responsibility will rest with  Color: #000000 Size: 8.2 Font: DejaVuSans
 Bank Details:                  Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
-Account Name: RBSC Associates  Color: #000000 Size: 8.2 Font: DejaVuSans
+Account Name: Probfixora       Color: #000000 Size: 8.2 Font: DejaVuSans
 Bank Name: State Bank of India Color: #000000 Size: 8.2 Font: DejaVuSans
 Branch: Hussainganj, Lucknow   Color: #000000 Size: 8.2 Font: DejaVuSans
 Account No.: 43722468016       Color: #000000 Size: 8.2 Font: DejaVuSans
 IFSC Code: SBIN0003814         Color: #000000 Size: 8.2 Font: DejaVuSans
 Bank Details:                  Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
-Account Name: RBSC Associates  Color: #000000 Size: 8.2 Font: DejaVuSans
+Account Name: Probfixora       Color: #000000 Size: 8.2 Font: DejaVuSans
 Bank Name: UCO BANK            Color: #000000 Size: 8.2 Font: DejaVuSans
 Branch: CHARBAGH BAL VIDYA MAN Color: #000000 Size: 8.2 Font: DejaVuSans
 Lucknow                        Color: #000000 Size: 8.2 Font: DejaVuSans
