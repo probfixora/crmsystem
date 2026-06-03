@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { supabase, edgeFetch, EDGE } from '../lib/supabaseClient';
 import { toast } from 'react-hot-toast';
-import { Plus, Minus, Send } from 'lucide-react';
+import { Plus, Minus, Send, User, ShieldCheck, Battery, Zap, Settings, FileText, IndianRupee } from 'lucide-react';
+import './QuotationForm.css';
 import ManualTypeDropdown from './ManualTypeDropdown';
 import { BRANDING } from '../config/branding';
 
@@ -76,13 +77,8 @@ const BRAND_WATT = {
 const BRAND_PRICE_PER_PANEL = {
   'Luminous Solar Panel':12000,'Tata Power Solar Panel':13000,'Premier Solar Panel':11000,
   'Adani Solar Panel':11500,'Luminous Amaze Solar Panel':12500,'Havells Solar Panel':12000,
-  'INA Solar Panel':10500,'Vikram Solar Panel':11000,'Credence Solar Panel':10800,
   'MV Solar Panel':11200,'Waree Solar Panel':11000,
 };
-
-
-import './QuotationForm.css';
-import { User, ShieldCheck, Battery, Zap, Settings, Send, FileText, IndianRupee } from 'lucide-react';
 
 const Ctr = ({ value, onChange }) => (
   <div className="q-ctr">
