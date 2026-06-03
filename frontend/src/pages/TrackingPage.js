@@ -6,15 +6,15 @@ const WORKFLOW_URL = `${process.env.REACT_APP_SUPABASE_URL}/functions/v1/workflo
 const ANON_KEY = process.env.REACT_APP_SUPABASE_ANON_KEY;
 
 const STAGES = [
-  { key: 'Under Review',       label: 'Under Review',       icon: 'pending_actions' },
-  { key: 'Registered',         label: 'Registered',         icon: 'how_to_reg' },
+  { key: 'Under Review', label: 'Under Review', icon: 'pending_actions' },
+  { key: 'Registered', label: 'Registered', icon: 'how_to_reg' },
   { key: 'Financial Approval', label: 'Financial Approval', icon: 'account_balance' },
-  { key: 'Material Ready',     label: 'Material Ready',     icon: 'inventory_2' },
-  { key: 'Installation',       label: 'Installation',       icon: 'construction' },
-  { key: 'Approval Process',   label: 'Approval Process',   icon: 'gavel' },
-  { key: 'Activated',          label: 'Activated',          icon: 'bolt' },
-  { key: 'Subsidy',            label: 'Subsidy',            icon: 'request_quote' },
-  { key: 'Completed',          label: 'Completed',          icon: 'task_alt' }
+  { key: 'Material Ready', label: 'Material Ready', icon: 'inventory_2' },
+  { key: 'Installation', label: 'Installation', icon: 'construction' },
+  { key: 'Approval Process', label: 'Approval Process', icon: 'gavel' },
+  { key: 'Activated', label: 'Activated', icon: 'bolt' },
+  { key: 'Subsidy', label: 'Subsidy', icon: 'request_quote' },
+  { key: 'Completed', label: 'Completed', icon: 'task_alt' }
 ];
 
 const stageIndex = (stage) => {
@@ -26,20 +26,20 @@ const stageIndex = (stage) => {
     return s;
   };
   const mapped = mapLegacyStage(stage);
-  
+
   const map = {
     'Sent to Sales': 0,
-    'Registration Done': 1, 
+    'Registration Done': 1,
     'Phone Verification Done': 1,
-    'Bank & Finance': 2, 
+    'Bank & Finance': 2,
     'Sent to Store': 3,
-    'Installation Started': 4, 
+    'Installation Started': 4,
     'Govt Approvals Pending': 5,
     'Plant Activated': 6,
     'QA Verified': 6,
     'Accounts Verified': 6,
     'Sent to Subsidy': 7,
-    'Subsidy Registration Completed': 7, 
+    'Subsidy Registration Completed': 7,
     'Post-Installation Service': 8,
   };
   return map[mapped] ?? -1;
@@ -53,10 +53,10 @@ const FEATURES = [
 
 export default function TrackingPage() {
   const [searchParams] = useSearchParams();
-  const [inputId, setInputId]   = useState('');
-  const [result,  setResult]    = useState(null);
-  const [loading, setLoading]   = useState(false);
-  const [error,   setError]     = useState('');
+  const [inputId, setInputId] = useState('');
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleTrack = useCallback(async (idToSearch) => {
     const id = (idToSearch || inputId).trim().toUpperCase();
@@ -88,8 +88,8 @@ export default function TrackingPage() {
     // eslint-disable-next-line
   }, []);
 
-  const currentIdx  = result ? stageIndex(result.current_stage) : -1;
-  const isDelayed   = result?.status === 'Delayed';
+  const currentIdx = result ? stageIndex(result.current_stage) : -1;
+  const isDelayed = result?.status === 'Delayed';
   const isCompleted = currentIdx >= 12;
   const pct = isCompleted ? 100 : currentIdx < 0 ? 0 : Math.round(((currentIdx + 1) / STAGES.length) * 100);
 
@@ -97,8 +97,8 @@ export default function TrackingPage() {
 
   return (
     <>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&display=swap" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&display=swap" rel="stylesheet" />
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { font-family: 'Inter', sans-serif; background: #f5f7fa; color: #1a1a2e; }
@@ -204,11 +204,11 @@ export default function TrackingPage() {
                 display: 'flex', flexDirection: 'column', justifyContent: 'center',
               }}>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.08)', borderRadius: 20, padding: '5px 14px', marginBottom: 28, width: 'fit-content' }}>
-                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', display: 'inline-block' }}/>
+                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', display: 'inline-block' }} />
                   <span style={{ color: '#86efac', fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase' }}>Live Tracking</span>
                 </div>
                 <h1 style={{ color: '#fff', fontSize: 'clamp(26px,3.2vw,42px)', fontWeight: 800, lineHeight: 1.22, letterSpacing: -.5, marginBottom: 20 }}>
-                  Track your solar<br/>project's progress<br/><span style={{ color: '#4ade80' }}>in real-time.</span>
+                  Track your solar<br />project's progress<br /><span style={{ color: '#4ade80' }}>in real-time.</span>
                 </h1>
                 <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15, lineHeight: 1.75, marginBottom: 36, maxWidth: 380 }}>
                   Get instant visibility into every stage of your {BRANDING.name} installation — from registration to plant activation.
@@ -217,7 +217,7 @@ export default function TrackingPage() {
                   {[
                     { icon: 'how_to_reg', text: 'Registration & verification status' },
                     { icon: 'construction', text: 'Installation progress & scheduling' },
-                    { icon: 'bolt',         text: 'Plant activation & completion' },
+                    { icon: 'bolt', text: 'Plant activation & completion' },
                   ].map(item => (
                     <div key={item.text} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                       <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(255,255,255,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -263,7 +263,7 @@ export default function TrackingPage() {
                   )}
 
                   <p style={{ fontSize: 12, color: '#94a3b8', textAlign: 'center', marginTop: 20, lineHeight: 1.7 }}>
-                    Your Tracking ID was sent to your registered email.<br/>
+                    Your Tracking ID was sent to your registered email.<br />
                     Format: <strong style={{ fontFamily: 'monospace', color: '#1a1a5e' }}>{BRANDING.caseIdPrefix}-NAME-00000</strong>
                   </p>
                 </div>
@@ -313,7 +313,7 @@ export default function TrackingPage() {
                     borderRadius: 20, padding: '3px 12px', fontSize: 12, fontWeight: 700,
                     display: 'flex', alignItems: 'center', gap: 5,
                   }}>
-                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'currentColor', display: 'inline-block', animation: isDelayed ? 'pulse 1.5s infinite' : 'none' }}/>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'currentColor', display: 'inline-block', animation: isDelayed ? 'pulse 1.5s infinite' : 'none' }} />
                     {isCompleted ? 'Installation Complete' : isDelayed ? 'Delayed' : 'In Progress'}
                   </span>
                   <span style={{ fontSize: 12, color: '#94a3b8', fontFamily: 'monospace', fontWeight: 600 }}>
@@ -362,22 +362,22 @@ export default function TrackingPage() {
                       height: '100%', width: `${pct}%`,
                       background: isDelayed ? 'linear-gradient(90deg,#dc2626,#ef4444)' : 'linear-gradient(90deg,#1a1a5e,#16a34a)',
                       borderRadius: 99, animation: 'barIn .9s ease both',
-                    }}/>
+                    }} />
                   </div>
 
                   {/* Timeline dots */}
                   <div style={{ overflowX: 'hidden' }}>
                     <div className="timeline-wrapper">
                       {STAGES.map((s, idx) => {
-                        const done    = idx < currentIdx;
+                        const done = idx < currentIdx;
                         const current = idx === currentIdx;
-                        const future  = idx > currentIdx;
+                        const future = idx > currentIdx;
                         const bg = done ? '#16a34a' : current && isDelayed ? '#dc2626' : current ? '#1a1a5e' : '#e8eaf0';
 
                         return (
                           <div key={s.key} className="timeline-item">
-                            {idx > 0 && <div className="timeline-line" style={{ position: 'absolute', top: 18, right: '50%', left: 0, height: 2, background: idx <= currentIdx ? '#16a34a' : '#e8eaf0', zIndex: 0 }}/>}
-                            {idx < STAGES.length - 1 && <div className="timeline-line" style={{ position: 'absolute', top: 18, left: '50%', right: 0, height: 2, background: idx < currentIdx ? '#16a34a' : '#e8eaf0', zIndex: 0 }}/>}
+                            {idx > 0 && <div className="timeline-line" style={{ position: 'absolute', top: 18, right: '50%', left: 0, height: 2, background: idx <= currentIdx ? '#16a34a' : '#e8eaf0', zIndex: 0 }} />}
+                            {idx < STAGES.length - 1 && <div className="timeline-line" style={{ position: 'absolute', top: 18, left: '50%', right: 0, height: 2, background: idx < currentIdx ? '#16a34a' : '#e8eaf0', zIndex: 0 }} />}
 
                             <div style={{
                               width: 38, height: 38, borderRadius: '50%', background: bg,
@@ -422,7 +422,7 @@ export default function TrackingPage() {
                         <div key={s.key} style={{ display: 'flex', gap: 16, paddingBottom: i < completedStages.length - 1 ? 20 : 0, position: 'relative' }}>
                           {/* vertical line */}
                           {i < completedStages.length - 1 && (
-                            <div style={{ position: 'absolute', left: 19, top: 36, bottom: 0, width: 2, background: '#e8eaf0' }}/>
+                            <div style={{ position: 'absolute', left: 19, top: 36, bottom: 0, width: 2, background: '#e8eaf0' }} />
                           )}
                           <div style={{
                             width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
@@ -522,12 +522,12 @@ export default function TrackingPage() {
             <div>
               <img src="/logo.png" alt={BRANDING.name} style={{ height: 36, marginBottom: 20 }} />
               <p className="footer-text" style={{ maxWidth: 280 }}>
-                Building sustainable energy<br/>
-                infrastructure across India with smart<br/>
+                Building sustainable energy<br />
+                infrastructure across India with smart<br />
                 solar solutions.
               </p>
             </div>
-            
+
             {/* Column 2: Contact */}
             <div>
               <div className="footer-heading">Contact</div>
@@ -535,11 +535,11 @@ export default function TrackingPage() {
                 <a href={`mailto:${BRANDING.email}`} className="footer-link">
                   <span className="mat">mail</span> {BRANDING.email}
                 </a>
-                <a href="https://wa.me/919935099756" className="footer-link">
-                  <span className="mat">chat_bubble</span> +91 99350 99756
+                <a href="https://wa.me/919278142266" className="footer-link">
+                  <span className="mat">chat_bubble</span> +91 92781 42266
                 </a>
-                <a href="tel:+919793201124" className="footer-link">
-                  <span className="mat">call</span> +91 97932 01124
+                <a href="tel:+919278142266" className="footer-link">
+                  <span className="mat">call</span> +91 92781 42266
                 </a>
               </div>
             </div>
@@ -550,11 +550,10 @@ export default function TrackingPage() {
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                 <span className="mat" style={{ color: '#94a3b8', fontSize: 18, marginTop: 2, fontVariationSettings: "'FILL' 0" }}>location_on</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                  <strong style={{ color: '#1a1a5e', fontSize: 14, fontWeight: 700 }}>Lucknow Headquarters</strong>
+                  <strong style={{ color: '#1a1a5e', fontSize: 14, fontWeight: 700 }}>New Delhi Headquarters</strong>
                   <span className="footer-text">
-                    Office No. 11, Bhopal House<br/>
-                    Lalbagh, Hazratganj<br/>
-                    Lucknow - 226001
+                    Probfixora<br />
+                    New Delhi, India<br />
                   </span>
                 </div>
               </div>

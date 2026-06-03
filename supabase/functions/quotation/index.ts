@@ -54,7 +54,7 @@ function generateProposalHTML(q: any, logoBase64: string): string {
   const pageHeader = `
     <div style="display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:8px; border-bottom:1px solid #999; margin-bottom:10px;">
       <div>
-        <h1 style="color:#1a1a5e; font-size:28px; font-weight:900; margin:0; letter-spacing:-1px;">PROBFIXORA</h1>
+        ${logoBase64 ? `<img src="data:image/png;base64,${logoBase64}" alt="Probfixora" style="height:56px; object-fit:contain;" />` : `<h1 style="color:#b45309; font-size:28px; font-weight:900; margin:0; letter-spacing:-1px;">PROBFIXORA</h1>`}
       </div>
       <div style="text-align:right; font-size:11px; line-height:1.6;">
         <div style="font-weight:bold; font-size:13px;"><span style="color:#ff8c00;">Probfixora</span></div>
@@ -474,24 +474,24 @@ async function sendEmail(q: any, pdfBytes: Uint8Array, approvalToken?: string) {
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:Arial,Helvetica,sans-serif;background:#f0f4f8;color:#1a202c}
     .wrapper{max-width:620px;margin:32px auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.10)}
-    .header{background:linear-gradient(135deg,#1a1a5e 0%,#16a34a 100%);padding:28px 40px 24px;text-align:center}
+    .header{background:linear-gradient(135deg,#d97706 0%,#f59e0b 100%);padding:28px 40px 24px;text-align:center}
     .header-logo{display:block;margin:0 auto 12px;max-height:60px;width:auto}
     .header h1{color:#fff;font-size:20px;font-weight:700;margin:0;letter-spacing:0.3px}
     .header p{color:rgba(255,255,255,0.80);font-size:13px;margin-top:4px}
-    .divider-bar{height:4px;background:linear-gradient(90deg,#1a1a5e,#16a34a)}
+    .divider-bar{height:4px;background:linear-gradient(90deg,#d97706,#f59e0b)}
     .body{padding:36px 40px}
-    .greeting{font-size:18px;font-weight:700;color:#1a1a5e;margin-bottom:10px}
+    .greeting{font-size:18px;font-weight:700;color:#b45309;margin-bottom:10px}
     .intro{font-size:14px;color:#4a5568;line-height:1.7;margin-bottom:24px}
-    .summary-title{background:#1a1a5e;color:#fff;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:10px 20px}
+    .summary-title{background:#b45309;color:#fff;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:10px 20px}
     .summary-wrap{border:1.5px solid #c7d2fe;border-radius:10px;overflow:hidden;margin-bottom:24px}
     table{width:100%;border-collapse:collapse;font-size:13px}
     td{padding:12px 20px;border-bottom:1px solid #e2e8f0;color:#374151}
     tr:last-child td{border-bottom:none}
-    td:first-child{font-weight:600;color:#1a1a5e;width:42%;background:#f8faff}
-    .total-row td{background:#eef2ff;font-weight:700;font-size:14px;color:#1a1a5e}
+    td:first-child{font-weight:600;color:#b45309;width:42%;background:#fffbeb}
+    .total-row td{background:#fef3c7;font-weight:700;font-size:14px;color:#b45309}
     .sign{font-size:13px;color:#4a5568;line-height:1.7;margin-top:8px}
     .footer{background:#f8fafc;padding:20px 40px;text-align:center;border-top:1px solid #e2e8f0}
-    .footer-logo{font-size:15px;font-weight:700;color:#1a1a5e;margin-bottom:4px}
+    .footer-logo{font-size:15px;font-weight:700;color:#b45309;margin-bottom:4px}
     .footer-logo span{color:#16a34a}
     .footer p{font-size:11px;color:#94a3b8;line-height:1.6;margin-top:4px}
     .footer a{color:#4f46e5;text-decoration:none}
@@ -500,7 +500,7 @@ async function sendEmail(q: any, pdfBytes: Uint8Array, approvalToken?: string) {
 <body>
 <div class="wrapper">
   <div class="header">
-    <h1 style="color:white; font-size:32px; font-weight:bold; margin:0;">Probfixora</h1>
+    ${logoBase64 ? `<img src="data:image/png;base64,${logoBase64}" alt="Probfixora" class="header-logo" style="height:64px; object-fit:contain; margin-bottom:10px; background:white; padding:4px 8px; border-radius:8px;" />` : `<h1 style="color:white; font-size:32px; font-weight:bold; margin:0;">Probfixora</h1>`}
     <h1>Solar Quotation</h1>
     <p>Probfixora — New Delhi</p>
   </div>
@@ -525,7 +525,7 @@ async function sendEmail(q: any, pdfBytes: Uint8Array, approvalToken?: string) {
     
     ${approvalToken ? `
     <div style="margin: 32px 0; text-align: center; background: #f8fafc; padding: 24px; border-radius: 12px; border: 1.5px dashed #cbd5e1;">
-      <h3 style="margin-top: 0; color: #1a1a5e; font-size: 16px; margin-bottom: 12px;">Approve Your Quotation</h3>
+      <h3 style="margin-top: 0; color: #b45309; font-size: 16px; margin-bottom: 12px;">Approve Your Quotation</h3>
       <p style="font-size: 13px; color: #475569; margin-bottom: 20px; line-height: 1.6;">
         Click below to review your quotation and proceed with the installation process. You will be able to approve or decline the quotation directly through our secure portal.
       </p>
@@ -538,7 +538,7 @@ async function sendEmail(q: any, pdfBytes: Uint8Array, approvalToken?: string) {
     <p class="intro">If you have any questions, please contact us quoting your Quotation ID <strong>${q.quotation_id}</strong>.</p>
     <p class="sign">
       Warm regards,<br/>
-      <strong style="color:#1a1a5e">Probfixora Team</strong><br/>
+      <strong style="color:#b45309">Probfixora Team</strong><br/>
       <span style="font-size:12px;color:#94a3b8">New Delhi, Uttar Pradesh, India</span>
     </p>
   </div>

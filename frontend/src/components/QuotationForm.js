@@ -298,7 +298,7 @@ export default function QuotationForm() {
   return (
     <div className="quotation-page">
       <div className="quotation-hdr">
-        <img src="/logo.png" alt={`${BRANDING.name} Logo`} style={{ width: '200px', height: 'auto', maxHeight: '72px', objectFit: 'contain' }} />
+        <img src="/logo.png" alt={`${BRANDING.name} Logo`} style={{ width: '200px', height: 'auto', maxHeight: '60px', objectFit: 'contain', objectPosition: 'left center', background: 'white', padding: '4px 8px', borderRadius: '8px' }} />
         <div>
           <div style={{fontSize:21,fontWeight:800}}>Solar Quotation Form</div>
           <div style={{fontSize:12,opacity:.8}}>Generate professional solar project quotations</div>

@@ -131,7 +131,7 @@ const Login = ({ setToken }) => {
 
         {/* Brand Core */}
         <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center' }}>
-          <img src="/logo.png" alt={BRANDING.name} style={{ width: '260px', height: 'auto', maxHeight: '100px', objectFit: 'contain' }} />
+          <img src="/logo.png" alt={BRANDING.name} style={{ width: '220px', height: 'auto', maxHeight: '60px', objectFit: 'contain', objectPosition: 'left center' }} />
         </div>
 
         {/* Center Main Statement */}

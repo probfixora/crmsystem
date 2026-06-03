@@ -364,7 +364,9 @@ serve(async (req) => {
     return jsonResponse({ message: `Unknown action: ${action}` }, 400);
   } catch (err: any) {
     const message = err.message || JSON.stringify(err) || "Internal error";
-    const status = message.includes("Unauthorized") || message.includes("Admin") ? 403 : 500;
+    let status = 500;
+    if (message.includes("Unauthorized")) status = 401;
+    else if (message.includes("Admin")) status = 403;
     return jsonResponse({ message, stack: err.stack }, status);
   }
 });
