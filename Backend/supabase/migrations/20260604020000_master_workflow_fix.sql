@@ -138,12 +138,17 @@ ALTER TABLE public.profiles
     'registration',
     'banking',
     'store',
+    'inventory',
     'installation',
+    'field_installation',
     'electrical',
     'technical',
+    'technical_qa',
     'accounts',
+    'accountant',
     'subsidy',
-    'customer_service'
+    'customer_service',
+    'procurement'
   ));
 
 -- ─── STEP 8: Add missing audit / action types ────────────────
