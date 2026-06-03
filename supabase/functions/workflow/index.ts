@@ -176,7 +176,7 @@ function maskCaseDataForRole(role: string, caseRow: any): any {
 }
 
 // ─── Main server ──────────────────────────────────────────────────────────────
-serve(async (req) => {
+serve(async (req: Request) => {
   // Handle CORS preflight
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
@@ -686,19 +686,19 @@ serve(async (req) => {
             if (invItems) {
               // 1. Panels
               if (specs.panelCount) {
-                const panel = invItems.find(i => i.category?.toLowerCase() === 'solar panel');
+                const panel = invItems.find((i: any) => i.category?.toLowerCase() === 'solar panel');
                 if (panel) itemsToDeduct.push({ item: panel, qty: Number(specs.panelCount) });
               }
               // 2. Inverter
               if (specs.inverterBrand) {
-                const inv = invItems.find(i => i.category?.toLowerCase() === 'inverter' && i.brand?.toLowerCase() === specs.inverterBrand?.toLowerCase())
-                            || invItems.find(i => i.category?.toLowerCase() === 'inverter');
+                const inv = invItems.find((i: any) => i.category?.toLowerCase() === 'inverter' && i.brand?.toLowerCase() === specs.inverterBrand?.toLowerCase())
+                            || invItems.find((i: any) => i.category?.toLowerCase() === 'inverter');
                 if (inv) itemsToDeduct.push({ item: inv, qty: 1 }); // usually 1 inverter
               }
               // 3. Battery
               if (specs.batteryBrand && specs.batteryCount) {
-                const bat = invItems.find(i => i.category?.toLowerCase() === 'battery' && i.brand?.toLowerCase() === specs.batteryBrand?.toLowerCase())
-                            || invItems.find(i => i.category?.toLowerCase() === 'battery');
+                const bat = invItems.find((i: any) => i.category?.toLowerCase() === 'battery' && i.brand?.toLowerCase() === specs.batteryBrand?.toLowerCase())
+                            || invItems.find((i: any) => i.category?.toLowerCase() === 'battery');
                 if (bat) itemsToDeduct.push({ item: bat, qty: Number(specs.batteryCount) });
               }
 

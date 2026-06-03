@@ -122,9 +122,7 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    DARK MODE — OLED Premium (Linear / Vercel inspired)
 ═══════════════════════════════════════════════════════════════════════════ */
-[data-theme="dark"] {
-  /* Inherits from :root since :root is now dark */
-}
+/* [data-theme="dark"] inherits from :root since :root is now dark */
 
 /* ═══════════════════════════════════════════════════════════════════════════
    GLOBAL RESET & BASE

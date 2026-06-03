@@ -588,7 +588,7 @@ async function sendEmail(q: any, pdfBytes: Uint8Array, approvalToken?: string) {
 }
 
 // ─── Main handler ─────────────────────────────────────────────────────────────
-serve(async (req) => {
+serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
 
   const supabase = createClient(

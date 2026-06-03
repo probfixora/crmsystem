@@ -1,10 +1,10 @@
-# RBSC Solar CRM
+# ProbFixora CRM
 
 A comprehensive Customer Relationship Management (CRM) system designed specifically for solar energy companies. This platform manages the entire lifecycle of a solar installation project, from initial customer registration and quotation generation to installation, financing, and subsidy processing.
 
-![RBSC Solar CRM](frontend/public/logo192.png) <!-- Update with an actual screenshot or logo path if available -->
+![ProbFixora CRM](frontend/public/logo3.png) <!-- Update with an actual screenshot or logo path if available -->
 
-## 🌟 Key Features
+## Key Features
 
 - **Role-Based Access Control (RBAC):** Customized dashboards and permissions for various departments including Admin, Sales, Registration, Banking/Finance, Store/Inventory, Installation, Electrical, and Subsidy.
 - **Dynamic Case Registration:** Intelligent form that adapts required document checklists based on the customer's occupation (Salaried, Pensioner, Business Owner).
@@ -41,8 +41,8 @@ A comprehensive Customer Relationship Management (CRM) system designed specifica
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Nikhiltiwaridotin/Internship_project.git
-   cd Internship_project
+   git clone https://github.com/probfixora/crmsystem.git
+   cd crmsystem
    ```
 
 2. **Frontend Setup**
