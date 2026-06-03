@@ -186,6 +186,7 @@ const QuotationList = ({ onLogout }) => {
                             fontWeight: 600, cursor: 'pointer',
                           }}
                         >
+                          {q.status === 'draft' && <option value="draft">Draft</option>}
                           <option value="Submitted">Submitted</option>
                           <option value="Processing">Processing</option>
                           <option value="Approved">Approved</option>
