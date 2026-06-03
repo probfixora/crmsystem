@@ -96,11 +96,21 @@ ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS escalation_level INT DEFAULT 0
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS consumer_id TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS pin_code TEXT DEFAULT '';
 -- Finance & banking columns
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS payment_type TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS payment_mode TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS cash_amount NUMERIC;
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS down_payment NUMERIC;
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS loan_amount NUMERIC;
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS emi_amount NUMERIC;
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS lender_name TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS bank_name TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS loan_account_number TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS loan_tenure INT;
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS bank_visited_date DATE;
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS finance_form_status TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS finance_final_status TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS disbursement_details TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS finance_notes TEXT DEFAULT '';
 -- Additional workflow columns
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS quotation_id TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS kw_capacity NUMERIC DEFAULT 0;
