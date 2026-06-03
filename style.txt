@@ -1,0 +1,101 @@
+PAGE 1
+RBSC                           Color: #ffa500 Size: 9.0 Font: DejaVuSans-Bold
+Associates                     Color: #008000 Size: 9.0 Font: DejaVuSans-Bold
+Office no. 11, Bhopal House La Color: #000000 Size: 9.0 Font: DejaVuSans
+Hazratganj, Lucknow 226001, In Color: #000000 Size: 9.0 Font: DejaVuSans
+Email:                         Color: #000000 Size: 9.0 Font: DejaVuSans
+info@rbscsolar.com             Color: #0000cc Size: 9.0 Font: DejaVuSans
+| Web:                         Color: #000000 Size: 9.0 Font: DejaVuSans
+www.rbscsolar.com              Color: #0000cc Size: 9.0 Font: DejaVuSans
+Quotation No.: RBSC-25-04-2026 Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+Date: 25 Apr 2026              Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+Luminous On Grid Solar Panel   Color: #000000 Size: 9.8 Font: DejaVuSans-Bold
+Customer Name:                 Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+Ashish Tiwari                  Color: #000000 Size: 8.2 Font: DejaVuSans
+Mobile No.:                    Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+81880 07777                    Color: #000000 Size: 8.2 Font: DejaVuSans
+Address:                       Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+Charbagh                       Color: #000000 Size: 8.2 Font: DejaVuSans
+Company Name:                  Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+RBSC Associates                Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+Address:                       Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+Office no. 11, Bhopal House La Color: #000000 Size: 8.2 Font: DejaVuSans
+Hazratganj, Lucknow 226001, In Color: #000000 Size: 8.2 Font: DejaVuSans
+GSTIN:                         Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+09AATFR0415M1ZQ                Color: #000000 Size: 8.2 Font: DejaVuSans
+Project:                       Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+On Grid                        Color: #000000 Size: 8.2 Font: DejaVuSans
+Electric Load:                 Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+5KW                            Color: #000000 Size: 8.2 Font: DejaVuSans
+Employee:                      Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+Lavkush Sharma                 Color: #000000 Size: 8.2 Font: DejaVuSans
+Employee-id:                   Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+307778                         Color: #000000 Size: 8.2 Font: DejaVuSans
+System Components & Pricing    Color: #000000 Size: 9.8 Font: DejaVuSans-Bold
+Sr. No                         Color: #000000 Size: 7.5 Font: DejaVuSans-Bold
+Item Description               Color: #000000 Size: 7.5 Font: DejaVuSans-Bold
+Capacity                       Color: #000000 Size: 7.5 Font: DejaVuSans-Bold
+Quantity                       Color: #000000 Size: 7.5 Font: DejaVuSans-Bold
+Warranty                       Color: #000000 Size: 7.5 Font: DejaVuSans-Bold
+Price (INR)                    Color: #000000 Size: 7.5 Font: DejaVuSans-Bold
+1                              Color: #000000 Size: 7.5 Font: DejaVuSans
+Luminous On Grid Solar Panel   Color: #000000 Size: 7.5 Font: DejaVuSans
+5kW                            Color: #000000 Size: 7.5 Font: DejaVuSans
+10                             Color: #000000 Size: 7.5 Font: DejaVuSans
+25 Years                       Color: #000000 Size: 7.5 Font: DejaVuSans
+Included                       Color: #000000 Size: 7.5 Font: DejaVuSans
+2                              Color: #000000 Size: 7.5 Font: DejaVuSans
+GTI Inverter: Luminous         Color: #000000 Size: 7.5 Font: DejaVuSans
+5kW                            Color: #000000 Size: 7.5 Font: DejaVuSans
+1                              Color: #000000 Size: 7.5 Font: DejaVuSans
+8 Years                        Color: #000000 Size: 7.5 Font: DejaVuSans
+Included                       Color: #000000 Size: 7.5 Font: DejaVuSans
+4                              Color: #000000 Size: 7.5 Font: DejaVuSans
+Structure                      Color: #000000 Size: 7.5 Font: DejaVuSans
+Jindal (80mm)                  Color: #000000 Size: 7.5 Font: DejaVuSans
+Set 1                          Color: #000000 Size: 7.5 Font: DejaVuSans
+--                             Color: #000000 Size: 7.5 Font: DejaVuSans
+Included                       Color: #000000 Size: 7.5 Font: DejaVuSans
+5                              Color: #000000 Size: 7.5 Font: DejaVuSans
+Wiring                         Color: #000000 Size: 7.5 Font: DejaVuSans
+6 Square MM                    Color: #000000 Size: 7.5 Font: DejaVuSans
+(Havells/Polycap/KEI)          Color: #000000 Size: 7.5 Font: DejaVuSans
+--                             Color: #000000 Size: 7.5 Font: DejaVuSans
+--                             Color: #000000 Size: 7.5 Font: DejaVuSans
+Included                       Color: #000000 Size: 7.5 Font: DejaVuSans
+6                              Color: #000000 Size: 7.5 Font: DejaVuSans
+Earthing                       Color: #000000 Size: 7.5 Font: DejaVuSans
+2.5 Square MM copper           Color: #000000 Size: 7.5 Font: DejaVuSans
+--                             Color: #000000 Size: 7.5 Font: DejaVuSans
+--                             Color: #000000 Size: 7.5 Font: DejaVuSans
+Included                       Color: #000000 Size: 7.5 Font: DejaVuSans
+7                              Color: #000000 Size: 7.5 Font: DejaVuSans
+Installation and Net Mettering Color: #000000 Size: 7.5 Font: DejaVuSans
+--                             Color: #000000 Size: 7.5 Font: DejaVuSans
+--                             Color: #000000 Size: 7.5 Font: DejaVuSans
+--                             Color: #000000 Size: 7.5 Font: DejaVuSans
+Included                       Color: #000000 Size: 7.5 Font: DejaVuSans
+8                              Color: #000000 Size: 7.5 Font: DejaVuSans
+BOS (Balance of System)        Color: #000000 Size: 7.5 Font: DejaVuSans
+Complete Set                   Color: #000000 Size: 7.5 Font: DejaVuSans
+Set 1                          Color: #000000 Size: 7.5 Font: DejaVuSans
+--                             Color: #000000 Size: 7.5 Font: DejaVuSans
+Included                       Color: #000000 Size: 7.5 Font: DejaVuSans
+Total Quotation Amount: 290,00 Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+*Transportations extra as per  Color: #000000 Size: 8.2 Font: DejaVuSans
+Adani     /            ,   /   Color: #000000 Size: 8.2 Font: NotoSansDevanagari-Regul
+The Adani solar panel has been Color: #000000 Size: 8.2 Font: DejaVuSans
+responsibility will rest with  Color: #000000 Size: 8.2 Font: DejaVuSans
+Bank Details:                  Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+Account Name: RBSC Associates  Color: #000000 Size: 8.2 Font: DejaVuSans
+Bank Name: State Bank of India Color: #000000 Size: 8.2 Font: DejaVuSans
+Branch: Hussainganj, Lucknow   Color: #000000 Size: 8.2 Font: DejaVuSans
+Account No.: 43722468016       Color: #000000 Size: 8.2 Font: DejaVuSans
+IFSC Code: SBIN0003814         Color: #000000 Size: 8.2 Font: DejaVuSans
+Bank Details:                  Color: #000000 Size: 8.2 Font: DejaVuSans-Bold
+Account Name: RBSC Associates  Color: #000000 Size: 8.2 Font: DejaVuSans
+Bank Name: UCO BANK            Color: #000000 Size: 8.2 Font: DejaVuSans
+Branch: CHARBAGH BAL VIDYA MAN Color: #000000 Size: 8.2 Font: DejaVuSans
+Lucknow                        Color: #000000 Size: 8.2 Font: DejaVuSans
+Account No.: 20220210000205    Color: #000000 Size: 8.2 Font: DejaVuSans
+IFSC Code: UCBA0002022         Color: #000000 Size: 8.2 Font: DejaVuSans
