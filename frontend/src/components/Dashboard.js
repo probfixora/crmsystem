@@ -72,15 +72,15 @@ const Dashboard = ({ onLogout, title = 'Dashboard', roleBadge, viewAsUserId, vie
               // so that Dashboard numbers match the Customers list exactly
               const rawCases = get(empCases) || [];
               const myStages = {
-                registration:       ['Registration Done', 'Phone Verification Done'],
+                registration:       ['Registration Done', 'Phone Verification Done', 'Govt Approvals Pending'],
                 banking:            ['Bank & Finance'],
                 inventory:          ['Sent to Store'],
-                field_installation: ['Installation Done', 'Plant Activated'],
+                field_installation: ['Installation Started', 'Plant Activated'],
                 subsidy:            ['Sent to Subsidy', 'Subsidy Registration Completed'],
               }[userRole] || [];
               const fullPipeline = [
                 'Registration Done','Phone Verification Done','Bank & Finance',
-                'Sent to Store','Installation Done','Plant Activated',
+                'Sent to Store','Installation Started','Govt Approvals Pending','Plant Activated',
                 'Sent to Subsidy','Subsidy Registration Completed','Completed',
               ];
               const myLastIdx = Math.max(...myStages.map(s => fullPipeline.indexOf(s)));
@@ -236,18 +236,17 @@ const Dashboard = ({ onLogout, title = 'Dashboard', roleBadge, viewAsUserId, vie
   // Dept-specific widget data
   const deptWidgets = {
     banking: [
-      { label: 'Pending loan cases',  val: cases.filter(c => c.currentStage === 'Banking In Process').length,             color: '#f59e0b', icon: Clock },
-      { label: 'Awaiting approval',   val: cases.filter(c => c.currentStage === 'Loan Approved / Cash Confirmed').length,  color: '#f97316', icon: CheckCircle2 },
-      { label: 'Delayed in banking',  val: cases.filter(c => c.currentStage === 'Banking In Process' && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
+      { label: 'Pending loan cases',  val: cases.filter(c => c.currentStage === 'Bank & Finance').length,             color: '#f59e0b', icon: Clock },
+      { label: 'Delayed in banking',  val: cases.filter(c => c.currentStage === 'Bank & Finance' && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
     ],
     field_installation: [
-      { label: 'Sites to install',    val: cases.filter(c => c.currentStage === 'Installation Done').length,  color: '#10b981', icon: Zap },
+      { label: 'Sites to install',    val: cases.filter(c => c.currentStage === 'Installation Started').length,  color: '#10b981', icon: Zap },
       { label: 'With site visit date', val: cases.filter(c => c.siteVisitDate).length,                         color: '#6366f1', icon: Calendar },
-      { label: 'Overdue installs',    val: cases.filter(c => c.currentStage === 'Installation Done' && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
+      { label: 'Overdue installs',    val: cases.filter(c => c.currentStage === 'Installation Started' && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
     ],
     electrical: [
-      { label: 'Awaiting inspection', val: cases.filter(c => c.currentStage === 'Electrical Checked').length, color: '#0ea5e9', icon: Zap },
-      { label: 'Delayed checks',      val: cases.filter(c => c.currentStage === 'Electrical Checked' && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
+      { label: 'Awaiting inspection', val: cases.filter(c => c.currentStage === 'Govt Approvals Pending').length, color: '#0ea5e9', icon: Zap },
+      { label: 'Delayed checks',      val: cases.filter(c => c.currentStage === 'Govt Approvals Pending' && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
     ],
     subsidy: [
       { label: 'Subsidy Pending',    val: cases.filter(c => c.currentStage === 'Subsidy Registration Completed').length, color: '#ec4899', icon: Clock },
@@ -513,8 +512,8 @@ const Dashboard = ({ onLogout, title = 'Dashboard', roleBadge, viewAsUserId, vie
                 <span className="live-badge"><span className="live-dot" />Live</span>
               </div>
               {[
-                'Registration Done','Banking In Process','Loan Approved / Cash Confirmed',
-                'Sent to Store','Installation Done','Electrical Checked',
+                'Registration Done','Bank & Finance',
+                'Sent to Store','Installation Started','Govt Approvals Pending',
                 'Plant Activated','Subsidy Registration Completed',
               ].map(stage => {
                 const count = cases.filter(c => c.currentStage === stage).length;
