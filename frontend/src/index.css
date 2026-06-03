@@ -7,10 +7,10 @@
 
 :root {
   /* ── Layout ── */
-  --sidebar-width:     240px;
+  --sidebar-width:     260px;
   --sidebar-collapsed: 64px;
   --header-height:     64px;
-  --main-offset:       248px;   /* sidebar + 8px gap */
+  --main-offset:       268px;   /* sidebar + 8px gap */
   --content-max:       1440px;
 
   /* ── Brand / Primary (Probfixora Amber/Yellow) ── */

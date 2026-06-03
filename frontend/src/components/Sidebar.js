@@ -235,11 +235,11 @@ const Sidebar = ({ onLogout }) => {
       {/* Logo / Brand */}
       <div style={{ padding: '16px 20px', borderBottom: '1px solid var(--color-border)', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
         <div
-          style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', marginBottom: '16px', width: '100%' }}
+          style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', marginBottom: '12px', width: '100%' }}
           onClick={() => navigate('/')}
           title="Go to dashboard"
         >
-          <img src="/logo.png" alt={BRANDING.name} style={{ width: '100%', height: 'auto', maxHeight: '52px', objectFit: 'contain', objectPosition: 'left center' }} />
+          <img src="/logo.png" alt={BRANDING.name} style={{ width: '200px', height: 'auto', objectFit: 'contain' }} />
         </div>
 
         {/* Role badge */}
