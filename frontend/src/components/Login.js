@@ -6,21 +6,21 @@ import { supabase } from '../lib/supabaseClient';
 import { BRANDING } from '../config/branding';
 
 const stats = [
-  { label: 'Projects Delivered', value: '500+' },
-  { label: 'Expert Specialists', value: '50+' },
-  { label: 'Client Satisfaction',value: '4.9★' },
+  { label: 'Projects Delivered', value: '10+' },
+  { label: 'Expert Specialists', value: '2+' },
+  { label: 'Client Satisfaction', value: '4.8★' },
 ];
 
 const features = [
   { icon: BarChart3, text: 'Real-time multi-tier pipeline analytics' },
-  { icon: Users,     text: 'Granular department role routing' },
-  { icon: Zap,       text: 'Instant reactive stage task assignments' },
+  { icon: Users, text: 'Granular department role routing' },
+  { icon: Zap, text: 'Instant reactive stage task assignments' },
 ];
 
 const Login = ({ setToken }) => {
-  const [email, setEmail]       = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading]   = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -98,7 +98,7 @@ const Login = ({ setToken }) => {
 
   return (
     <div className="login-container animate-fade-in" style={{ minHeight: '100vh', display: 'flex', background: 'var(--page-bg)' }}>
-      
+
       {/* ── Immersive Left Value-Prop Presentation ── */}
       <div className="login-left" style={{
         width: '54%', background: 'linear-gradient(145deg, var(--surface) 0%, var(--color-bg) 100%)',
@@ -136,7 +136,7 @@ const Login = ({ setToken }) => {
 
         {/* Center Main Statement */}
         <div style={{ position: 'relative', zIndex: 1, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '40px 0' }}>
-          
+
           <div className="animate-fade-up" style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
             padding: '6px 16px', borderRadius: 'var(--radius-full)', marginBottom: '32px',
@@ -151,7 +151,7 @@ const Login = ({ setToken }) => {
           </div>
 
           <h1 className="animate-fade-up" style={{
-            fontSize: '44px', fontWeight: 800, color: 'var(--text-1)', lineHeight: 1.12, 
+            fontSize: '44px', fontWeight: 800, color: 'var(--text-1)', lineHeight: 1.12,
             letterSpacing: '-0.035em', marginBottom: '24px', animationDelay: '0.1s'
           }}>
             Accelerate every<br />
@@ -159,9 +159,9 @@ const Login = ({ setToken }) => {
             delivery stage.
           </h1>
 
-          <p className="hide-on-mobile animate-fade-up" style={{ 
-            fontSize: '15.5px', color: 'var(--text-3)', lineHeight: 1.65, 
-            maxWidth: '420px', marginBottom: '44px', animationDelay: '0.2s', fontWeight: 400 
+          <p className="hide-on-mobile animate-fade-up" style={{
+            fontSize: '15.5px', color: 'var(--text-3)', lineHeight: 1.65,
+            maxWidth: '420px', marginBottom: '44px', animationDelay: '0.2s', fontWeight: 400
           }}>
             Coordinate cross-functional teams, manage resources, and streamline workflow delivery in complete synchronization.
           </p>
@@ -169,11 +169,11 @@ const Login = ({ setToken }) => {
           <div className="hide-on-mobile animate-fade-up" style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '48px', animationDelay: '0.3s' }}>
             {features.map(({ icon: Icon, text }) => (
               <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ 
-                  width: '32px', height: '32px', borderRadius: 'var(--radius-sm)', 
+                <div style={{
+                  width: '32px', height: '32px', borderRadius: 'var(--radius-sm)',
                   background: 'var(--surface)', backdropFilter: 'blur(8px)',
-                  border: '1px solid var(--border)', display: 'flex', 
-                  alignItems: 'center', justifyContent: 'center', flexShrink: 0 
+                  border: '1px solid var(--border)', display: 'flex',
+                  alignItems: 'center', justifyContent: 'center', flexShrink: 0
                 }}>
                   <Icon style={{ width: '15px', height: '15px', color: 'var(--color-primary-hover)' }} />
                 </div>
@@ -183,9 +183,9 @@ const Login = ({ setToken }) => {
           </div>
 
           {/* Premium Ambient Stats Container */}
-          <div className="hide-on-mobile animate-fade-up" style={{ 
-            display: 'flex', gap: '32px', borderTop: '1px solid var(--border)', 
-            paddingTop: '36px', animationDelay: '0.4s' 
+          <div className="hide-on-mobile animate-fade-up" style={{
+            display: 'flex', gap: '32px', borderTop: '1px solid var(--border)',
+            paddingTop: '36px', animationDelay: '0.4s'
           }}>
             {stats.map((s, i) => (
               <div key={s.label} style={{ flex: 1 }}>
@@ -213,12 +213,12 @@ const Login = ({ setToken }) => {
         flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
         padding: '56px 48px', background: 'var(--page-bg)', position: 'relative'
       }}>
-        <div className="card" style={{ 
-          width: '100%', maxWidth: '420px', padding: '40px 36px', 
+        <div className="card" style={{
+          width: '100%', maxWidth: '420px', padding: '40px 36px',
           borderRadius: 'var(--radius-xl)', border: '1px solid var(--border)',
           boxShadow: 'var(--shadow-elevation)', background: 'var(--surface)'
         }}>
-          
+
           <div style={{ marginBottom: '32px', textAlign: 'center' }}>
             <h2 style={{ fontSize: '26px', fontWeight: 800, color: 'var(--text-1)', letterSpacing: '-0.03em', marginBottom: '6px' }}>
               Portal Access
@@ -227,20 +227,20 @@ const Login = ({ setToken }) => {
           </div>
 
           <form onSubmit={handleLogin}>
-            
+
             <div style={{ marginBottom: '20px' }}>
               <label style={{ display: 'block', fontSize: '12.5px', fontWeight: 700, color: 'var(--text-2)', marginBottom: '8px', letterSpacing: '0.02em', textTransform: 'uppercase' }}>
                 Corporate Email
               </label>
               <div className="input-group">
                 <Mail className="icon" />
-                <input 
-                  type="email" 
-                  value={email} 
-                  onChange={e => setEmail(e.target.value)} 
-                  required 
-                  className="input" 
-                  placeholder={`name@${BRANDING.email.split('@')[1] || 'company.com'}`} 
+                <input
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  required
+                  className="input"
+                  placeholder={`name@${BRANDING.email.split('@')[1] || 'company.com'}`}
                   style={{ borderRadius: 'var(--radius-md)', padding: '13px 16px 13px 40px' }}
                 />
               </div>
@@ -252,23 +252,23 @@ const Login = ({ setToken }) => {
               </label>
               <div className="input-group">
                 <Lock className="icon" />
-                <input 
-                  type="password" 
-                  value={password} 
-                  onChange={e => setPassword(e.target.value)} 
-                  required 
-                  className="input" 
-                  placeholder="••••••••••••" 
+                <input
+                  type="password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  required
+                  className="input"
+                  placeholder="••••••••••••"
                   style={{ borderRadius: 'var(--radius-md)', padding: '13px 16px 13px 40px', letterSpacing: '0.1em' }}
                 />
               </div>
             </div>
 
             <button
-              type="submit" 
+              type="submit"
               disabled={loading}
               className="btn btn-primary btn-lg"
-              style={{ 
+              style={{
                 width: '100%', padding: '15px 24px', borderRadius: 'var(--radius-md)',
                 opacity: loading ? 0.7 : 1, cursor: loading ? 'not-allowed' : 'pointer',
                 display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px'
@@ -291,7 +291,7 @@ const Login = ({ setToken }) => {
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--success)', flexShrink: 0, boxShadow: '0 0 0 2px hsla(160, 84%, 39%, 0.2)' }} />
               <p style={{ fontSize: '11.5px', color: 'var(--text-3)', lineHeight: 1.4, margin: 0, fontWeight: 500 }}>
-                Protected system resources intended exclusively for cleared {BRANDING.name} associates.
+                Protected system resources intended exclusively for cleared {BRANDING.name}.
               </p>
             </div>
           </div>

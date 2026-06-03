@@ -49,10 +49,11 @@ const Footer = () => (
         <div style={{ display: 'flex', gap: '10px' }}>
           <MapPin style={{ width: '14px', height: '14px', color: 'var(--text-4)', flexShrink: 0, marginTop: '2px' }} />
           <div>
-            <p style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-2)', marginBottom: '4px' }}>New Delhi Headquarters</p>
+            <p style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-2)', marginBottom: '4px' }}>Lucknow Headquarters</p>
             <p style={{ fontSize: '13px', color: 'var(--text-3)', lineHeight: 1.6 }}>
-              Probfixora<br />
-              New Delhi, India<br />
+              K1/45 smriti vihar colony <br />
+              Ashiyana , lucknow <br />
+              Uttar Pradesh, 226012<br />
             </p>
           </div>
         </div>
