@@ -47,7 +47,7 @@ export default function B2CDispatchPortal({ onLogout }) {
         body: {
           action: 'update_stage',
           caseId: caseId,
-          newStage: 'Installation',
+          newStage: 'Installation Started',
           note: 'Auto-dispatched items to installation site.'
         }
       });
