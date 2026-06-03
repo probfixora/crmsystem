@@ -80,14 +80,32 @@ ALTER TABLE public.cases
 ALTER TABLE public.cases DROP CONSTRAINT IF EXISTS cases_current_stage_check;
 -- (No constraint on current_stage — it's a free-text field, stages are tracked in case_history)
 
--- ─── STEP 6: Add missing columns to cases table ─────────────
+-- ─── STEP 6: Add ALL missing columns to cases table ────────
+-- Basic missing columns
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS document_statuses JSONB DEFAULT '{}'::jsonb;
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS documents JSONB DEFAULT '{}'::jsonb;
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS system_specs JSONB DEFAULT '{}'::jsonb;
+-- Critical columns used by the edge function (send_to_registration action)
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS customer_id TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS tracking_id TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS reference TEXT DEFAULT '';
+-- Columns used by workflow edge function (update_stage action)
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS stage_entered_at TIMESTAMPTZ DEFAULT NOW();
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS escalation_level INT DEFAULT 0;
+-- Columns used by create_case action
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS consumer_id TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS pin_code TEXT DEFAULT '';
+-- Finance & banking columns
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS payment_mode TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS cash_amount NUMERIC;
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS lender_name TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS loan_account_number TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS loan_tenure INT;
+-- Additional workflow columns
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS quotation_id TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS kw_capacity NUMERIC DEFAULT 0;
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS panel_brand TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS inverter_brand TEXT DEFAULT '';
-ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS installation_type TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS meter_number TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS plant_activation_date DATE;
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS qc_status TEXT DEFAULT '';
@@ -95,14 +113,10 @@ ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS qc_notes TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS payment_amount NUMERIC;
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS payment_verified_by TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS subsidy_amount NUMERIC;
-ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS subsidy_status TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS subsidy_notes TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS project_completed_at TIMESTAMPTZ;
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS completed_by TEXT DEFAULT '';
--- Critical columns used by the edge function (send_to_registration action)
-ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS customer_id TEXT DEFAULT '';
-ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS tracking_id TEXT DEFAULT '';
-ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS reference TEXT DEFAULT '';  -- stores quotation_id
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS geo_location TEXT DEFAULT '';
 
 -- ─── STEP 7: Ensure profiles role constraint covers all departments ─
 ALTER TABLE public.profiles DROP CONSTRAINT IF EXISTS profiles_role_check;
