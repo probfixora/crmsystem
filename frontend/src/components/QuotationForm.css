@@ -1,0 +1,263 @@
+.quotation-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  font-family: 'Inter', sans-serif;
+  color: #1e293b;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #f1f5f9, #ffffff);
+}
+
+.quotation-hdr {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  border-radius: 20px;
+  padding: 35px 40px;
+  margin-bottom: 30px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.quotation-hdr::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.quotation-hdr img {
+  width: 220px;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hdr-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.hdr-sub {
+  font-size: 14px;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+/* Glassmorphism Cards */
+.q-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.q-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
+}
+
+.q-sh {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e3a8a;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #eff6ff;
+}
+
+.q-sh svg {
+  color: #3b82f6;
+}
+
+/* Grids */
+.q-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.q-g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.q-mb { margin-bottom: 20px; }
+
+@media (max-width: 768px) {
+  .q-g2, .q-g3 { grid-template-columns: 1fr; gap: 16px; }
+  .quotation-hdr { flex-direction: column; text-align: center; padding: 25px 20px; }
+  .q-card { padding: 20px 16px; }
+}
+
+/* Form Fields */
+.q-lbl {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.q-req { color: #ef4444; }
+
+.q-inp, .q-sel, .q-ro {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #1e293b;
+  box-sizing: border-box;
+  outline: none;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.q-inp:focus, .q-sel:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.q-sel { cursor: pointer; }
+.q-ro {
+  background: #f8fafc;
+  color: #64748b;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+}
+
+/* Counter */
+.q-ctr {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.q-cbtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: none;
+  background: #eff6ff;
+  color: #2563eb;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.q-cbtn:hover {
+  background: #3b82f6;
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.q-cbtn:active { transform: scale(0.95); }
+.q-cnum { font-size: 16px; font-weight: 700; min-width: 32px; text-align: center; }
+
+/* Info Badges */
+.q-info {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-top: 8px;
+  border: 1px dashed #bfdbfe;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.q-alert-blue {
+  padding: 16px;
+  background: #eff6ff;
+  border-radius: 10px;
+  color: #1e3a8a;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #bfdbfe;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Price Inputs */
+.q-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: #16a34a;
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.q-price:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+}
+
+.q-price-err {
+  color: #ef4444;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+.q-price-err:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+/* Submit Button */
+.q-sub {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.q-sub:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+}
+
+.q-sub:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.q-sub:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}

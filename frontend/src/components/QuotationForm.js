@@ -81,37 +81,20 @@ const BRAND_PRICE_PER_PANEL = {
 };
 
 
-// ── Styles & sub-components defined OUTSIDE to prevent re-creation on render ──
-const S = {
-  page:   { maxWidth:960, margin:'0 auto', padding:'20px 14px', fontFamily:'Inter,sans-serif' },
-  hdr:    { background:'linear-gradient(135deg,#1e3a5f,#2563EB)', borderRadius:12, padding:'22px 28px', marginBottom:20, color:'#fff', display:'flex', alignItems:'center', gap:12 },
-  card:   { background:'#fff', borderRadius:12, boxShadow:'0 2px 10px rgba(37,99,235,0.08)', padding:'22px 24px', marginBottom:18, border:'1px solid #e2e8f0' },
-  sh:     { fontSize:14, fontWeight:700, color:'#1e3a5f', borderBottom:'2px solid #dbeafe', paddingBottom:8, marginBottom:18, textTransform:'uppercase', letterSpacing:.5 },
-  g2:     { display:'grid', gridTemplateColumns:'1fr 1fr', gap:16 },
-  g3:     { display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:16 },
-  lbl:    { display:'block', fontSize:12, fontWeight:600, color:'#4b5563', marginBottom:4 },
-  inp:    { width:'100%', padding:'9px 12px', border:'1.5px solid #d1d5db', borderRadius:7, fontSize:13, boxSizing:'border-box', outline:'none', background:'#fff', transition:'border-color 0.15s' },
-  sel:    { width:'100%', padding:'9px 12px', border:'1.5px solid #d1d5db', borderRadius:7, fontSize:13, boxSizing:'border-box', outline:'none', background:'#fff', cursor:'pointer', transition:'border-color 0.15s' },
-  ro:     { width:'100%', padding:'9px 12px', border:'1.5px solid #e5e7eb', borderRadius:7, fontSize:13, boxSizing:'border-box', background:'#f8fafc', color:'#6b7280' },
-  info:   { fontSize:13, fontWeight:700, color:'#2563eb', marginTop:5 },
-  ctr:    { display:'flex', alignItems:'center', gap:8, marginTop:2 },
-  cbtn:   { width:30, height:30, borderRadius:6, border:'none', background:'linear-gradient(135deg,#2563EB,#1D4ED8)', color:'#fff', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 2px 6px rgba(37,99,235,0.3)' },
-  cnum:   { fontSize:16, fontWeight:700, minWidth:28, textAlign:'center' },
-  sub:    { width:'100%', padding:'13px', background:'linear-gradient(135deg,#2563EB,#1D4ED8)', color:'#fff', border:'none', borderRadius:9, fontSize:15, fontWeight:700, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:8, marginTop:4, boxShadow:'0 4px 14px rgba(37,99,235,0.35)', transition:'all 0.15s' },
-  req:    { color:'#ef4444' },
-};
+import './QuotationForm.css';
+import { User, ShieldCheck, Battery, Zap, Settings, Send, FileText, IndianRupee } from 'lucide-react';
 
 const Ctr = ({ value, onChange }) => (
-  <div style={S.ctr}>
-    <button type="button" style={S.cbtn} onClick={() => onChange(Math.max(0, value-1))}><Minus size={12}/></button>
-    <span style={S.cnum}>{value}</span>
-    <button type="button" style={S.cbtn} onClick={() => onChange(value+1)}><Plus size={12}/></button>
+  <div className="q-ctr">
+    <button type="button" className="q-cbtn" onClick={() => onChange(Math.max(0, value-1))}><Minus size={16}/></button>
+    <span className="q-cnum">{value}</span>
+    <button type="button" className="q-cbtn" onClick={() => onChange(value+1)}><Plus size={16}/></button>
   </div>
 );
 
 const F = ({ label, req, children }) => (
   <div>
-    <label style={S.lbl}>{label}{req && <span style={S.req}> *</span>}</label>
+    <label className="q-lbl">{label}{req && <span className="q-req"> *</span>}</label>
     {children}
   </div>
 );
@@ -317,8 +300,8 @@ export default function QuotationForm() {
 
 
   return (
-    <div style={S.page}>
-      <div style={S.hdr}>
+    <div className="quotation-page">
+      <div className="quotation-hdr">
         <img src="/logo.png" alt={`${BRANDING.name} Logo`} style={{ width: '200px', height: 'auto', maxHeight: '72px', objectFit: 'contain' }} />
         <div>
           <div style={{fontSize:21,fontWeight:800}}>Solar Quotation Form</div>
@@ -328,11 +311,11 @@ export default function QuotationForm() {
 
       <form onSubmit={handleSubmit}>
         {/* ── 1. Customer ── */}
-        <div style={S.card}>
-          <div style={S.sh}>1. Customer Information</div>
-          <div style={{...S.g2, marginBottom:14}}>
+        <div className="q-card">
+          <div className="q-sh">1. Customer Information</div>
+          <div className="q-g2 q-mb">
             <F label="Customer Name/ID/Mobile" req>
-              <select style={S.sel}
+              <select className="q-sel"
                 value={f.customerMode === 'existing' ? f.customerId : f.customerMode}
                 onChange={e => onCustomer(e.target.value)}>
                 <option value="">Select Customer</option>
@@ -341,36 +324,36 @@ export default function QuotationForm() {
               </select>
             </F>
             <F label="Mobile Number" req>
-              <input style={S.inp} type="tel" value={f.mobile} onChange={e=>set('mobile',e.target.value)} required readOnly={f.customerMode==='existing'} />
+              <input className="q-inp" type="tel" value={f.mobile} onChange={e=>set('mobile',e.target.value)} required readOnly={f.customerMode==='existing'} />
             </F>
           </div>
-          <div style={{...S.g2, marginBottom:14}}>
+          <div className="q-g2 q-mb">
             <F label="Customer Name" req>
-              <input style={S.inp} value={f.customerName} onChange={e=>set('customerName',e.target.value)} required readOnly={f.customerMode==='existing'} />
+              <input className="q-inp" value={f.customerName} onChange={e=>set('customerName',e.target.value)} required readOnly={f.customerMode==='existing'} />
             </F>
             <F label="Address" req>
-              <input style={S.inp} value={f.address} onChange={e=>set('address',e.target.value)} required readOnly={f.customerMode==='existing'} />
+              <input className="q-inp" value={f.address} onChange={e=>set('address',e.target.value)} required readOnly={f.customerMode==='existing'} />
             </F>
           </div>
-          <div style={S.g2}>
+          <div className="q-g2">
             <F label="Email ID" req>
-              <input style={S.inp} type="email" value={f.email} onChange={e=>set('email',e.target.value)} readOnly={f.customerMode==='existing'} required />
+              <input className="q-inp" type="email" value={f.email} onChange={e=>set('email',e.target.value)} readOnly={f.customerMode==='existing'} required />
             </F>
-            <div style={S.g2}>
+            <div className="q-g2">
               <F label="Electrical Division" req>
-                <input style={S.inp} value={f.electricalDivision} onChange={e=>set('electricalDivision',e.target.value)} required />
+                <input className="q-inp" value={f.electricalDivision} onChange={e=>set('electricalDivision',e.target.value)} required />
               </F>
               <F label="Electrical Number" req>
-                <input style={S.inp} value={f.electricalNo} onChange={e=>set('electricalNo',e.target.value)} required />
+                <input className="q-inp" value={f.electricalNo} onChange={e=>set('electricalNo',e.target.value)} required />
               </F>
             </div>
           </div>
         </div>
 
         {/* ── 2. Technical Specs ── */}
-        <div style={S.card}>
-          <div style={S.sh}>2. Technical Specifications</div>
-          <div style={S.g2}>
+        <div className="q-card">
+          <div className="q-sh">2. Technical Specifications</div>
+          <div className="q-g2">
             <F label="Electrical Load" req>
               <ManualTypeDropdown
                 options={KW500}
@@ -379,11 +362,11 @@ export default function QuotationForm() {
                 placeholder="Select Load"
                 customLabel="Custom Load"
                 required
-                style={S.sel}
+                className="q-sel"
               />
             </F>
             <F label="Product Category" req>
-              <select style={S.sel} value={f.category} onChange={e=>onCategory(e.target.value)} required>
+              <select className="q-sel" value={f.category} onChange={e=>onCategory(e.target.value)} required>
                 <option value="">Select Category</option>
                 {CATEGORIES.map(c=><option key={c} value={c}>{c}</option>)}
               </select>
@@ -392,9 +375,9 @@ export default function QuotationForm() {
         </div>
 
         {/* ── 3. Panel & Brand ── */}
-        <div style={S.card}>
-          <div style={S.sh}>3. Panel &amp; Brand Details</div>
-          <div style={{...S.g2, marginBottom:14}}>
+        <div className="q-card">
+          <div className="q-sh">3. Panel &amp; Brand Details</div>
+          <div className="q-g2 q-mb">
             <F label="Panel Brand" req>
               <ManualTypeDropdown
                 options={BRANDS}
@@ -403,14 +386,14 @@ export default function QuotationForm() {
                 placeholder="Select Brand"
                 customLabel="Custom Brand"
                 required
-                style={S.sel}
+                className="q-sel"
               />
             </F>
             <F label="Product Name">
-              <input style={S.ro} value={f.productName} readOnly placeholder="Auto-filled from brand + category" />
+              <input className="q-ro" value={f.productName} readOnly placeholder="Auto-filled from brand + category" />
             </F>
           </div>
-          <div style={S.g2}>
+          <div className="q-g2">
             <F label="Panel Unit (kW)" req>
               <ManualTypeDropdown
                 options={KW500}
@@ -419,23 +402,23 @@ export default function QuotationForm() {
                 placeholder="Select Panel Unit"
                 customLabel="Custom Panel Unit"
                 required
-                style={S.sel}
+                className="q-sel"
               />
             </F>
             <div>
               <F label="Number of Panels">
                 <Ctr value={f.panelCount} onChange={onPanelCount} />
               </F>
-              <div style={S.info}>Total Wattage: {f.totalWatt.toLocaleString()} Watt</div>
-              <div style={S.info}>Total Price: ₹{f.totalPrice.toLocaleString()}</div>
+              <div className="q-info">Total Wattage: {f.totalWatt.toLocaleString()} Watt</div>
+              <div className="q-info">Total Price: ₹{f.totalPrice.toLocaleString()}</div>
             </div>
           </div>
         </div>
 
         {/* ── 4. Warranty & Inverter ── */}
-        <div style={S.card}>
-          <div style={S.sh}>4. Warranty &amp; Inverter</div>
-          <div style={S.g2}>
+        <div className="q-card">
+          <div className="q-sh">4. Warranty &amp; Inverter</div>
+          <div className="q-g2">
             <F label="Panel Warranty">
               <ManualTypeDropdown
                 options={PANEL_WARR}
@@ -443,7 +426,7 @@ export default function QuotationForm() {
                 onChange={v => set('panelWarranty', v)}
                 placeholder="Select Warranty"
                 customLabel="Custom Warranty"
-                style={S.sel}
+                className="q-sel"
               />
             </F>
             <F label="GTI Inverter" req>
@@ -454,7 +437,7 @@ export default function QuotationForm() {
                 placeholder="Select GTI Inverter"
                 customLabel="Custom GTI Inverter"
                 required
-                style={S.sel}
+                className="q-sel"
               />
             </F>
             <F label="Inverter kW" req>
@@ -465,23 +448,23 @@ export default function QuotationForm() {
                 placeholder="Select kW"
                 customLabel="Custom Inverter kW"
                 required
-                style={S.sel}
+                className="q-sel"
               />
             </F>
             <F label="Inverter Warranty">
-              <input style={S.inp} value={f.inverterWarranty} onChange={e=>set('inverterWarranty',e.target.value)} placeholder="e.g. 2 Years" />
+              <input className="q-inp" value={f.inverterWarranty} onChange={e=>set('inverterWarranty',e.target.value)} placeholder="e.g. 2 Years" />
             </F>
           </div>
         </div>
 
         {/* ── 5. System Components & Extras ── */}
-        <div style={S.card}>
-          <div style={S.sh}>5. System Components &amp; Extras</div>
+        <div className="q-card">
+          <div className="q-sh">5. System Components &amp; Extras</div>
           {showBat ? (
-            <div style={{...S.g2, marginBottom:14}}>
+            <div className="q-g2 q-mb">
               <div>
                 <F label="Battery Brand">
-                  <select style={S.sel} value={f.batteryOption} onChange={e=>onBatteryOption(e.target.value)}>
+                  <select className="q-sel" value={f.batteryOption} onChange={e=>onBatteryOption(e.target.value)}>
                     <option value="">Select Brand &amp; Capacity</option>
                     {BATTERY_OPTIONS.map(o=><option key={o.label} value={o.label}>{o.label}</option>)}
                   </select>
@@ -491,8 +474,8 @@ export default function QuotationForm() {
                   return (
                     <div style={{marginTop:8, padding:'8px 12px', background:'#eff6ff', borderRadius:8, border:'1px solid #dbeafe'}}>
                       <div style={{fontSize:12, color:'#6b7280', fontWeight:500}}>Price per battery: <strong style={{color:'#1d4ed8'}}>&#8377;{(opt?.price||0).toLocaleString()}</strong></div>
-                      <div style={S.info}>Total Capacity: {f.totalBatCapacity} Ah</div>
-                      <div style={S.info}>Total Battery Price: &#8377;{f.totalBatPrice.toLocaleString()}</div>
+                      <div className="q-info">Total Capacity: {f.totalBatCapacity} Ah</div>
+                      <div className="q-info">Total Battery Price: &#8377;{f.totalBatPrice.toLocaleString()}</div>
                     </div>
                   );
                 })()}
@@ -509,7 +492,7 @@ export default function QuotationForm() {
                       onChange={v => set('batteryWarranty', v)}
                       placeholder="Select Warranty"
                       customLabel="Custom Warranty"
-                      style={S.sel}
+                      className="q-sel"
                     />
                   </F>
                 </div>
@@ -520,7 +503,7 @@ export default function QuotationForm() {
               ✓ Battery not required for <strong>{f.category}</strong> systems
             </div>
           )}
-          <div style={S.g3}>
+          <div className="q-g3">
             <F label="Structure">
               <ManualTypeDropdown
                 options={STRUCTURES}
@@ -528,11 +511,11 @@ export default function QuotationForm() {
                 onChange={v => set('structure', v)}
                 placeholder="Select Structure"
                 customLabel="Custom Structure"
-                style={S.sel}
+                className="q-sel"
               />
             </F>
             <F label="BOS (Balance of System)">
-              <input style={S.ro} value={f.bos} readOnly />
+              <input className="q-ro" value={f.bos} readOnly />
             </F>
             <div>
               <F label="Wire Core Material">
@@ -542,7 +525,7 @@ export default function QuotationForm() {
                   onChange={v => set('wire_core_material', v)}
                   placeholder="Select Core"
                   customLabel="Custom Wire Core"
-                  style={S.sel}
+                  className="q-sel"
                 />
               </F>
               <div style={{marginTop:10}}>
@@ -552,28 +535,28 @@ export default function QuotationForm() {
                     value={f.wire_armouring}
                     onChange={v => set('wire_armouring', v)}
                     placeholder="Select Armouring"
-                    style={S.sel}
+                    className="q-sel"
                   />
                 </F>
               </div>
             </div>
           </div>
-          <div style={{...S.g2, marginTop:14}}>
+          <div className="q-g2 q-mb">
             <F label="Earthing">
-              <input style={S.inp} value={f.earthing} onChange={e=>set('earthing',e.target.value)} placeholder="e.g. 2.5 Sq MM copper" />
+              <input className="q-inp" value={f.earthing} onChange={e=>set('earthing',e.target.value)} placeholder="e.g. 2.5 Sq MM copper" />
             </F>
             <F label="Installation & Net Metering">
-              <input style={S.ro} value={f.installation} readOnly />
+              <input className="q-ro" value={f.installation} readOnly />
             </F>
           </div>
         </div>
 
         {/* ── 6. Pricing & Employee ── */}
-        <div style={S.card}>
-          <div style={S.sh}>6. Final Submission</div>
-          <div style={{...S.g2, marginBottom:14}}>
+        <div className="q-card">
+          <div className="q-sh">6. Final Submission</div>
+          <div className="q-g2 q-mb">
             <F label="Product Price Quote (₹)" req>
-              <input style={{...S.inp,fontSize:17,fontWeight:700,color:'#16a34a'}} type="number" min="0"
+              <input className="q-inp q-price" type="number" min="0"
                 placeholder="Enter final price" value={f.productPrice} onChange={e=>set('productPrice',e.target.value)} required />
             </F>
             <F label="Re-check Product Price (₹)" req>
@@ -585,21 +568,21 @@ export default function QuotationForm() {
               {f.recheckPrice && <p style={{fontSize:12,marginTop:3,color:priceOk?'#16a34a':'#ef4444'}}>{priceOk?'✓ Match':'⚠ No match'}</p>}
             </F>
           </div>
-          <div style={S.g3}>
+          <div className="q-g3">
             <F label="Employee ID">
-              <input style={S.ro} value={f.employeeId} readOnly placeholder="Auto-filled" />
+              <input className="q-ro" value={f.employeeId} readOnly placeholder="Auto-filled" />
             </F>
             <F label="Employee Name">
-              <input style={S.ro} value={f.employeeName} readOnly placeholder="Auto-filled" />
+              <input className="q-ro" value={f.employeeName} readOnly placeholder="Auto-filled" />
             </F>
             <F label="Employee Email">
-              <input style={S.ro} value={f.employeeEmail} readOnly placeholder="Auto-filled" />
+              <input className="q-ro" value={f.employeeEmail} readOnly placeholder="Auto-filled" />
             </F>
           </div>
         </div>
 
-        <button type="submit" disabled={loading} style={{...S.sub,opacity:loading?.6:1}}>
-          <Send size={16}/>{loading?'Submitting…':'Submit Quotation'}
+        <button type="submit" disabled={loading} className="q-sub">
+          <Send size={20}/>{loading ? 'Submitting & Emailing...' : 'Submit Quotation & Send Email'}
         </button>
       </form>
     </div>
