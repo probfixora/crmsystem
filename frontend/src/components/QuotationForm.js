@@ -556,9 +556,7 @@ export default function QuotationForm() {
                 placeholder="Enter final price" value={f.productPrice} onChange={e=>set('productPrice',e.target.value)} required />
             </F>
             <F label="Re-check Product Price (₹)" req>
-              <input style={{...S.inp,fontSize:17,fontWeight:700,
-                borderColor: f.recheckPrice?(priceOk?'#16a34a':'#ef4444'):'#d1d5db',
-                color: f.recheckPrice?(priceOk?'#16a34a':'#ef4444'):'#111'}}
+              <input className={`q-inp q-price ${f.recheckPrice && !priceOk ? 'q-price-err' : ''}`}
                 type="number" min="0" placeholder="Re-enter to verify"
                 value={f.recheckPrice} onChange={e=>set('recheckPrice',e.target.value)} required />
               {f.recheckPrice && <p style={{fontSize:12,marginTop:3,color:priceOk?'#16a34a':'#ef4444'}}>{priceOk?'✓ Match':'⚠ No match'}</p>}
