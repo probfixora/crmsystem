@@ -40,8 +40,8 @@ const EscalationBadge = ({ c }) => {
     'Installation Started': 'field_installation',
     'Govt Approvals Pending': 'registration',
     'Plant Activated': 'field_installation',
-    'QA Verified': 'technical_qa',
-    'Accounts Verified': 'accountant',
+    'QA Verified': 'technical',
+    'Accounts Verified': 'accounts',
     'Sent to Subsidy': 'subsidy',
     'Subsidy Registration Completed': 'subsidy',
     'Completed': 'customer_service'

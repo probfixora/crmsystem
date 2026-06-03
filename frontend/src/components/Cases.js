@@ -13,23 +13,32 @@ import Footer from './Footer';
 const roleStageMap = {
   admin: [],
   sales: [],
-  registration: ['Registration Done', 'Phone Verification Done'],
+  registration: ['Registration Done', 'Phone Verification Done', 'Govt Approvals Pending'],
   banking: ['Bank & Finance'],
   inventory: ['Sent to Store'],
-  field_installation: ['Installation Done', 'Plant Activated'],
+  field_installation: ['Installation Started', 'Plant Activated'],
+  electrical: ['Govt Approvals Pending'],
+  technical: ['QA Verified'],
+  accounts: ['Accounts Verified'],
   subsidy: ['Sent to Subsidy', 'Subsidy Registration Completed'],
+  customer_service: ['Post-Installation Service'],
 };
 
 // Full pipeline order — used to determine if a case has moved PAST my dept's stage
 const STAGE_ORDER = [
+  'Sent to Sales',
   'Registration Done',
   'Phone Verification Done',
   'Bank & Finance',
   'Sent to Store',
-  'Installation Done',
+  'Installation Started',
+  'Govt Approvals Pending',
   'Plant Activated',
+  'QA Verified',
+  'Accounts Verified',
   'Sent to Subsidy',
   'Subsidy Registration Completed',
+  'Post-Installation Service',
   'Completed',
 ];
 
