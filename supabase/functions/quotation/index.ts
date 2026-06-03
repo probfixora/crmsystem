@@ -54,13 +54,12 @@ function generateProposalHTML(q: any, logoBase64: string): string {
   const pageHeader = `
     <div style="display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:8px; border-bottom:1px solid #999; margin-bottom:10px;">
       <div>
-        ${logoBase64 ? `<img src="data:image/png;base64,${logoBase64}" alt="Logo" style="height:60px;" />` : ""}
+        <h1 style="color:#1a1a5e; font-size:28px; font-weight:900; margin:0; letter-spacing:-1px;">PROBFIXORA</h1>
       </div>
       <div style="text-align:right; font-size:11px; line-height:1.6;">
-        <div style="font-weight:bold; font-size:13px;"><span style="color:#ff8c00;">RBSC</span> <span style="color:#008000;">Associates</span></div>
-        <div>Office no. 11, Bhopal House Lalbagh,</div>
-        <div>Hazratganj, Lucknow 226001, India</div>
-        <div>Email: <span style="color:#0000cc;">info@rbscsolar.com</span> | Web: <span style="color:#0000cc;">www.rbscsolar.com</span></div>
+        <div style="font-weight:bold; font-size:13px;"><span style="color:#ff8c00;">Probfixora</span></div>
+        <div>Probfixora, New Delhi, India</div>
+        <div>Email: <span style="color:#0000cc;">probfixora@gmail.com</span> | Web: <span style="color:#0000cc;">www.probfixora.co.in</span></div>
       </div>
     </div>
   `;
@@ -233,7 +232,7 @@ function generateProposalHTML(q: any, logoBase64: string): string {
   <div style="margin-top:10px; font-size:12px;">
     <strong>Total Quotation Amount: ₹${price}</strong>
   </div>
-  <div style="font-size:10px; margin-top:6px;">*Transportations extra as per actual from Lucknow.</div>
+  <div style="font-size:10px; margin-top:6px;">*Transportations extra as per actual from New Delhi.</div>
 
   ${disclaimerHTML}
 
@@ -244,9 +243,9 @@ function generateProposalHTML(q: any, logoBase64: string): string {
     <!-- Left Bank -->
     <div style="flex:1; line-height:1.8;">
       <div><strong>Bank Details:</strong></div>
-      <div>Account Name: RBSC Associates</div>
+      <div>Account Name: Probfixora</div>
       <div>Bank Name: State Bank of India (SBI)</div>
-      <div>Branch: Hussainganj, Lucknow</div>
+      <div>Branch: Hussainganj, New Delhi</div>
       <div>Account No.: 43722468016</div>
       <div>IFSC Code: SBIN0003814</div>
     </div>
@@ -257,9 +256,9 @@ function generateProposalHTML(q: any, logoBase64: string): string {
     <!-- Right Bank -->
     <div style="flex:1; text-align:right; line-height:1.8;">
       <div><strong>Bank Details:</strong></div>
-      <div>Account Name: RBSC Associates</div>
+      <div>Account Name: Probfixora</div>
       <div>Bank Name: UCO BANK</div>
-      <div>Branch: CHARBAGH BAL VIDYA MANDIR, Lucknow</div>
+      <div>Branch: CHARBAGH BAL VIDYA MANDIR, New Delhi</div>
       <div>Account No.: 20220210000205</div>
       <div>IFSC Code: UCBA0002022</div>
     </div>
@@ -295,7 +294,7 @@ function generateProposalHTML(q: any, logoBase64: string): string {
   ${lightDivider}
   <div style="margin: 12px 0; font-size:11px; text-align:justify; line-height:1.8;">
     <p><strong>VALIDITY OF OFFER:</strong><br/>
-    Prices quoted are firm and generally valid for 15 days from the date of offer. After this period, prices are subject to reconfirmation. RBSC ASSOCIATES will only be liable to perform work based on the scope of work listed in the final offer. Any additional work or equipment beyond this scope shall be charged separately. Offer prices may vary after a detailed site survey or due to changes in site conditions.</p>
+    Prices quoted are firm and generally valid for 15 days from the date of offer. After this period, prices are subject to reconfirmation. Probfixora will only be liable to perform work based on the scope of work listed in the final offer. Any additional work or equipment beyond this scope shall be charged separately. Offer prices may vary after a detailed site survey or due to changes in site conditions.</p>
   </div>
 
   ${lightDivider}
@@ -307,7 +306,7 @@ function generateProposalHTML(q: any, logoBase64: string): string {
   ${lightDivider}
   <div style="margin: 12px 0; font-size:11px; text-align:justify; line-height:1.8;">
     <p><strong>TRANSPORT, FREIGHT &amp; INSURANCE:</strong><br/>
-    Transport charges are inclusive. Insurance and handling charges are exclusive on supply items. (Ex-Works: Delhi / Noida / Lucknow)</p>
+    Transport charges are inclusive. Insurance and handling charges are exclusive on supply items. (Ex-Works: Delhi / Noida / New Delhi)</p>
   </div>
 
   <!-- ═══════════════════ PAGE 3 CONTINUATION ═══════════════════ -->
@@ -340,24 +339,24 @@ function generateProposalHTML(q: any, logoBase64: string): string {
     ${lightDivider}
     <div style="margin: 12px 0; text-align:justify;">
       <p><strong>INSTALLATION HEIGHT DISCLAIMER:</strong><br/>
-      The standard installation height for solar structures provided by RBSC Associates is 7 feet. If the customer requests installation at a height greater than 7 feet, RBSC Associates shall not be responsible for any issues, damages, or challenges arising in the future due to the increased height.<br/>
+      The standard installation height for solar structures provided by Probfixora is 7 feet. If the customer requests installation at a height greater than 7 feet, Probfixora shall not be responsible for any issues, damages, or challenges arising in the future due to the increased height.<br/>
       Any additional structural support or safety measures for installations beyond 7 feet shall be the sole responsibility of the customer.</p>
     </div>
 
     ${lightDivider}
     <div style="margin: 12px 0; text-align:justify;">
       <p><strong>LIMITATION OF LIABILITY &amp; INDEMNITY:</strong><br/>
-      RBSC ASSOCIATES shall not be liable for any special, punitive, indirect, or consequential damages, including but not limited to loss of profits, loss of use, service interruptions, loss of reputation, or costs arising from pollution remediation. Claims by the Owner's customers or other parties shall also be excluded from liability.</p>
+      Probfixora shall not be liable for any special, punitive, indirect, or consequential damages, including but not limited to loss of profits, loss of use, service interruptions, loss of reputation, or costs arising from pollution remediation. Claims by the Owner's customers or other parties shall also be excluded from liability.</p>
     </div>
 
     ${lightDivider}
     <div style="margin: 12px 0; text-align:justify;">
-      <p><strong>COMMISSIONING &amp; TESTING:</strong> The overall liability of RBSC ASSOCIATES, whether for liquidated damages or otherwise, shall not exceed 2% of the total order value.</p>
+      <p><strong>COMMISSIONING &amp; TESTING:</strong> The overall liability of Probfixora, whether for liquidated damages or otherwise, shall not exceed 2% of the total order value.</p>
     </div>
 
     ${lightDivider}
     <div style="margin: 12px 0; text-align:justify;">
-      <p><strong>RESTOCKING CHARGES:</strong> Liquidated damages shall be the Owner's sole remedy for delay in delivery or deviations in the supply of equipment and shall constitute the complete liability of RBSC ASSOCIATES in such cases.</p>
+      <p><strong>RESTOCKING CHARGES:</strong> Liquidated damages shall be the Owner's sole remedy for delay in delivery or deviations in the supply of equipment and shall constitute the complete liability of Probfixora in such cases.</p>
     </div>
 
     ${lightDivider}
@@ -381,23 +380,23 @@ function generateProposalHTML(q: any, logoBase64: string): string {
 
     <div style="margin-top:20px;">
       <p style="font-weight:bold; font-size:12px;">Renewable Energy Solutions for a Brighter Future</p>
-      <p style="margin-top:6px;">RBSC Solar has been a leader in sustainable energy solutions for over 20+ years, providing innovative solar technologies.</p>
-      <p style="margin-top:4px;">At RBSC Solar, our mission is to revolutionize the energy industry by making solar power more accessible, efficient, and affordable for everyone. We strive to reduce carbon footprints and promote sustainable energy practices worldwide.</p>
+      <p style="margin-top:6px;">Probfixora has been a leader in sustainable energy solutions for over 20+ years, providing innovative solar technologies.</p>
+      <p style="margin-top:4px;">At Probfixora, our mission is to revolutionize the energy industry by making solar power more accessible, efficient, and affordable for everyone. We strive to reduce carbon footprints and promote sustainable energy practices worldwide.</p>
     </div>
 
     ${divider}
 
     <div style="margin-top:20px;">
       <p>Thanks &amp; Regards,</p>
-      <p><strong>Team RBSC Associates</strong></p>
-      <p>Lucknow, Uttar Pradesh, India</p>
-      <p><span style="color:#0000cc;">https://rbscsolar.com</span></p>
+      <p><strong>Team Probfixora</strong></p>
+      <p>New Delhi, Uttar Pradesh, India</p>
+      <p><span style="color:#0000cc;">https://probfixora.co.in</span></p>
     </div>
 
     ${divider}
 
     <div style="margin-top:16px; text-align:center; font-size:10px; color:#333; line-height:1.6;">
-      <p>We are proud to serve clients in Lucknow, Kanpur, Rai Bareli, Barabanki, Unnao, Hardoi, Shahjahanpur, Lakhimpur Kheri, Prayagraj, Sultanpur, Azamgarh, Jaunpur, Pratapgarh, Sitapur, and other surrounding areas.</p>
+      <p>We are proud to serve clients in New Delhi, Kanpur, Rai Bareli, Barabanki, Unnao, Hardoi, Shahjahanpur, Lakhimpur Kheri, Prayagraj, Sultanpur, Azamgarh, Jaunpur, Pratapgarh, Sitapur, and other surrounding areas.</p>
       <p style="font-weight:bold; margin-top:6px; font-style:italic;">Powering a Cleaner Tomorrow.</p>
       <p style="font-style:italic;">This is an automated message. Please do not reply.</p>
     </div>
@@ -470,7 +469,7 @@ async function sendEmail(q: any, pdfBytes: Uint8Array, approvalToken?: string) {
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Your Solar Quotation — RBSC Solar</title>
+  <title>Your Solar Quotation — Probfixora</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:Arial,Helvetica,sans-serif;background:#f0f4f8;color:#1a202c}
@@ -501,15 +500,15 @@ async function sendEmail(q: any, pdfBytes: Uint8Array, approvalToken?: string) {
 <body>
 <div class="wrapper">
   <div class="header">
-    <img src="data:image/png;base64,${logoBase64}" alt="RBSC Solar" class="header-logo"/>
+    <h1 style="color:white; font-size:32px; font-weight:bold; margin:0;">Probfixora</h1>
     <h1>Solar Quotation</h1>
-    <p>RBSC Associates — Lucknow</p>
+    <p>Probfixora — New Delhi</p>
   </div>
   <div class="divider-bar"></div>
   <div class="body">
     <div class="greeting">Dear ${q.customer_name},</div>
     <p class="intro">
-      Thank you for choosing <strong>RBSC Solar</strong>. Please find your customised solar system
+      Thank you for choosing <strong>Probfixora</strong>. Please find your customised solar system
       quotation attached as a PDF. Our team will reach out to you shortly to discuss next steps.
     </p>
     <div class="summary-wrap">
@@ -539,16 +538,16 @@ async function sendEmail(q: any, pdfBytes: Uint8Array, approvalToken?: string) {
     <p class="intro">If you have any questions, please contact us quoting your Quotation ID <strong>${q.quotation_id}</strong>.</p>
     <p class="sign">
       Warm regards,<br/>
-      <strong style="color:#1a1a5e">RBSC Solar Team</strong><br/>
-      <span style="font-size:12px;color:#94a3b8">Lucknow, Uttar Pradesh, India</span>
+      <strong style="color:#1a1a5e">Probfixora Team</strong><br/>
+      <span style="font-size:12px;color:#94a3b8">New Delhi, Uttar Pradesh, India</span>
     </p>
   </div>
   <div class="footer">
-    <div class="footer-logo">RBSC <span>Solar</span></div>
+    <div class="footer-logo">Probfixora <span>Solar</span></div>
     <p>
-      &copy; ${new Date().getFullYear()} RBSC Associates. All rights reserved.<br/>
-      <a href="https://rbscsolar.com">rbscsolar.com</a> &nbsp;|&nbsp;
-      <a href="mailto:info@rbscsolar.com">info@rbscsolar.com</a>
+      &copy; ${new Date().getFullYear()} Probfixora. All rights reserved.<br/>
+      <a href="https://probfixora.co.in">probfixora.co.in</a> &nbsp;|&nbsp;
+      <a href="mailto:probfixora@gmail.com">probfixora@gmail.com</a>
     </p>
     <p style="margin-top:8px;color:#cbd5e1;font-size:10px">This is an automated message. Please do not reply.</p>
   </div>
@@ -557,9 +556,9 @@ async function sendEmail(q: any, pdfBytes: Uint8Array, approvalToken?: string) {
 </html>`;
 
   const payload = {
-    sender: { name: "RBSC Solar", email: gmailEmail },
+    sender: { name: "Probfixora", email: gmailEmail },
     to: [{ email: q.customer_email as string }],
-    subject: `Your Solar Quotation ${q.quotation_id} — RBSC Solar`,
+    subject: `Your Solar Quotation ${q.quotation_id} — Probfixora`,
     htmlContent: html,
     attachment: [
       {
@@ -615,7 +614,7 @@ serve(async (req) => {
 
       const dateStrForId = new Date().toLocaleDateString('en-GB').replace(/\//g, '-');
       const uniqueNum = Math.floor(10000 + Math.random() * 90000);
-      const newQuotationId = `RBSC-${dateStrForId}-${uniqueNum}`;
+      const newQuotationId = `Probfixora-${dateStrForId}-${uniqueNum}`;
 
       const { data: quotation, error } = await supabase
         .from("quotations")
@@ -861,7 +860,7 @@ serve(async (req) => {
       const customerName   = q.customer_name || "";
       const nameSlug       = customerName.replace(/\s+/g, "").toUpperCase().replace(/[^A-Z]/g, "").substring(0, 4).padEnd(4, "X");
       const randomDigits   = String(Math.floor(10000 + Math.random() * 90000));
-      const trackingIdVal  = `RBSC-${nameSlug}-${randomDigits}`; 
+      const trackingIdVal  = `Probfixora-${nameSlug}-${randomDigits}`; 
 
       const now            = new Date();
       const dd   = String(now.getDate()).padStart(2, "0");
