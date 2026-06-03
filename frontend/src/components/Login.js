@@ -135,11 +135,11 @@ const Login = ({ setToken }) => {
         </div>
 
         {/* Center Main Statement */}
-        <div style={{ position: 'relative', zIndex: 1, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '40px 0' }}>
+        <div style={{ position: 'relative', zIndex: 1, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: '32px', paddingBottom: '40px' }}>
 
           <div className="animate-fade-up" style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
-            padding: '6px 16px', borderRadius: 'var(--radius-full)', marginBottom: '32px',
+            padding: '6px 16px', borderRadius: 'var(--radius-full)', marginBottom: '20px',
             background: 'var(--surface)', backdropFilter: 'blur(12px)',
             border: '1px solid var(--border)', width: 'fit-content',
             boxShadow: 'var(--shadow-sm)'
@@ -152,7 +152,7 @@ const Login = ({ setToken }) => {
 
           <h1 className="animate-fade-up" style={{
             fontSize: '44px', fontWeight: 800, color: 'var(--text-1)', lineHeight: 1.12,
-            letterSpacing: '-0.035em', marginBottom: '24px', animationDelay: '0.1s'
+            letterSpacing: '-0.035em', marginBottom: '20px', animationDelay: '0.1s'
           }}>
             Accelerate every<br />
             <span style={{ color: 'var(--color-primary-hover)' }}>operational pipeline</span><br />
@@ -210,7 +210,7 @@ const Login = ({ setToken }) => {
 
       {/* ── Right Panel Workspace Authentication ── */}
       <div className="login-right" style={{
-        flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
         padding: '56px 48px', background: 'var(--page-bg)', position: 'relative'
       }}>
         <div className="card" style={{
@@ -297,6 +297,27 @@ const Login = ({ setToken }) => {
           </div>
 
         </div>
+
+        {/* Mobile Stats & Footer */}
+        <div className="mobile-only" style={{ flexDirection: 'column', width: '100%', maxWidth: '420px', marginTop: '32px', gap: '24px' }}>
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'space-between', borderTop: '1px solid var(--border)', paddingTop: '24px' }}>
+            {stats.map((s, i) => (
+              <div key={s.label} style={{ flex: 1, textAlign: 'center' }}>
+                <p style={{ fontSize: '24px', fontWeight: 800, color: 'var(--text-1)', letterSpacing: '-0.03em', lineHeight: 1 }}>{s.value}</p>
+                <p style={{ fontSize: '11px', fontWeight: 500, color: 'var(--text-4)', marginTop: '6px' }}>{s.label}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'var(--text-4)', fontSize: '11.5px' }}>
+            <span>© {BRANDING.year} {BRANDING.name}</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <ShieldCheck size={14} />
+              <span>Secure TLS Encryption</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
