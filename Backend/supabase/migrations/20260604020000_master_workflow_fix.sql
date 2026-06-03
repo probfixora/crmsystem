@@ -99,6 +99,10 @@ ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS subsidy_status TEXT DEFAULT ''
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS subsidy_notes TEXT DEFAULT '';
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS project_completed_at TIMESTAMPTZ;
 ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS completed_by TEXT DEFAULT '';
+-- Critical columns used by the edge function (send_to_registration action)
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS customer_id TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS tracking_id TEXT DEFAULT '';
+ALTER TABLE public.cases ADD COLUMN IF NOT EXISTS reference TEXT DEFAULT '';  -- stores quotation_id
 
 -- ─── STEP 7: Ensure profiles role constraint covers all departments ─
 ALTER TABLE public.profiles DROP CONSTRAINT IF EXISTS profiles_role_check;
@@ -119,29 +123,8 @@ ALTER TABLE public.profiles
   ));
 
 -- ─── STEP 8: Add missing audit / action types ────────────────
-DO $$
-BEGIN
-  IF EXISTS (
-    SELECT 1 FROM information_schema.constraint_column_usage
-    WHERE table_name = 'case_history' AND constraint_name = 'case_history_action_type_check'
-  ) THEN
-    ALTER TABLE public.case_history DROP CONSTRAINT case_history_action_type_check;
-  END IF;
-END;
-$$;
-
-ALTER TABLE public.case_history
-  ADD COLUMN IF NOT EXISTS action_type TEXT NOT NULL DEFAULT 'stage_update';
-
-ALTER TABLE public.case_history
-  ADD CONSTRAINT case_history_action_type_check
-  CHECK (action_type IN (
-    'stage_update', 'case_created', 'case_deleted', 'finance_update',
-    'document_verified', 'delay_flagged', 'delay_cleared', 'dispatch',
-    'assignment_changed', 'priority_changed', 'subsidy_update',
-    'comment_added', 'system_auto', 'details_updated', 'qc_update',
-    'payment_update', 'plant_activation', 'meter_update'
-  ));
+ALTER TABLE public.case_history ADD COLUMN IF NOT EXISTS action_type TEXT NOT NULL DEFAULT 'stage_update';
+ALTER TABLE public.case_history ADD COLUMN IF NOT EXISTS department TEXT DEFAULT ''; -- used by edge function
 
 -- ─── STEP 9: Ensure case_portal_tokens table exists ──────────
 CREATE TABLE IF NOT EXISTS public.customer_portal_tokens (
