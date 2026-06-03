@@ -166,7 +166,7 @@ export default function TrackingPage() {
           boxShadow: '0 1px 8px rgba(0,0,0,.06)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <img src="/logo.png" alt={BRANDING.name} style={{ height: 32, width: 'auto' }} />
+            <img src="/logo.png" alt={BRANDING.name} style={{ height: 46, width: 'auto' }} />
             <span className="header-title">{BRANDING.name}</span>
           </div>
 
@@ -520,7 +520,7 @@ export default function TrackingPage() {
           <div className="footer-cols">
             {/* Column 1: Brand */}
             <div>
-              <img src="/logo.png" alt={BRANDING.name} style={{ height: 36, marginBottom: 20 }} />
+              <img src="/logo.png" alt={BRANDING.name} style={{ height: 48, width: 'auto', marginBottom: 20 }} />
               <p className="footer-text" style={{ maxWidth: 280 }}>
                 Building sustainable energy<br />
                 infrastructure across India with smart<br />

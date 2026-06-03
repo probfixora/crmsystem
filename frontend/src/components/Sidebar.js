@@ -239,7 +239,7 @@ const Sidebar = ({ onLogout }) => {
           onClick={() => navigate('/')}
           title="Go to dashboard"
         >
-          <img src="/logo.png" alt={BRANDING.name} style={{ width: '200px', height: 'auto', objectFit: 'contain' }} />
+          <img src="/logo.png" alt={BRANDING.name} style={{ width: '180px', height: 'auto', objectFit: 'contain' }} />
         </div>
 
         {/* Role badge */}

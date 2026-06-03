@@ -12,7 +12,7 @@ const Footer = () => (
       {/* Brand */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-          <img src="/logo.png" alt={BRANDING.name} style={{ width: '140px', height: 'auto', maxHeight: '48px', objectFit: 'contain', objectPosition: 'left center' }} />
+          <img src="/logo.png" alt={BRANDING.name} style={{ width: '160px', height: 'auto', objectFit: 'contain' }} />
         </div>
         <p style={{ fontSize: '13px', color: 'var(--text-3)', lineHeight: 1.7, maxWidth: '240px' }}>
           Building sustainable energy infrastructure across India with smart solar solutions.
