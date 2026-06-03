@@ -105,8 +105,8 @@ const stageToRole = {
   'Installation Started':           'field_installation',
   'Govt Approvals Pending':         'registration', // electrical also has access via canUpdateCase
   'Plant Activated':                'field_installation',
-  'QA Verified':                    'technical_qa',
-  'Accounts Verified':              'accountant',
+  'QA Verified':                    'technical',
+  'Accounts Verified':              'accounts',
   'Sent to Subsidy':                'subsidy',
   'Subsidy Registration Completed': 'subsidy',
   'Post-Installation Service':      'customer_service'
@@ -120,8 +120,8 @@ const roleLastStage = {
   banking:            'Bank & Finance',
   inventory:          'Sent to Store',
   field_installation: 'Plant Activated',
-  technical_qa:       'QA Verified',
-  accountant:         'Accounts Verified',
+  technical:          'QA Verified',
+  accounts:           'Accounts Verified',
   subsidy:            'Subsidy Registration Completed',
   customer_service:   'Post-Installation Service'
 };
