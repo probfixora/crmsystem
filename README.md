@@ -103,4 +103,4 @@ A comprehensive Customer Relationship Management (CRM) system designed specifica
 
 ## 📄 License
 
-This project is proprietary and confidential. Unauthorized copying, distribution, or use is strictly prohibited.
+This project is proprietary and confidential. Unauthorized copying, distribution, or use is strictly prohibited. 
