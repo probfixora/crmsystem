@@ -29,13 +29,13 @@ const QuotationList = ({ onLogout }) => {
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {
-      const payload = { action: 'update_status', id, status: newStatus };
-      if (newStatus === 'Approved' || newStatus === 'Submitted') {
+      const payload = { action: 'update_status', id, status: newStatus.toLowerCase() };
+      if (newStatus.toLowerCase() === 'approved' || newStatus.toLowerCase() === 'submitted') {
         payload.currentDepartment = 'Sales';
       }
       await edgeFetch(EDGE.quotation, payload);
       setQuotations(prev => prev.map(q => (q.id === id || q._id === id) 
-        ? { ...q, status: newStatus, current_department: (newStatus === 'Approved' || newStatus === 'Submitted') ? 'Sales' : q.current_department } 
+        ? { ...q, status: newStatus.toLowerCase(), current_department: (newStatus.toLowerCase() === 'approved' || newStatus.toLowerCase() === 'submitted') ? 'Sales' : q.current_department } 
         : q));
       toast.success(`Status updated to ${newStatus}`);
     } catch (error) {
@@ -49,7 +49,8 @@ const QuotationList = ({ onLogout }) => {
     const qId = q.quotation_id || q.quotationId || '';
     const matchesSearch = custName.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           qId.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = statusFilter === 'All' || q.status === statusFilter;
+    const qStatus = q.status || '';
+    const matchesStatus = statusFilter === 'All' || qStatus.toLowerCase() === statusFilter.toLowerCase();
     return matchesSearch && matchesStatus;
   });
 
@@ -62,7 +63,8 @@ const QuotationList = ({ onLogout }) => {
   };
 
   const getStatusBadge = (status) => {
-    const c = statusConfig[status] || { bg: '#F1F5F9', color: '#475569', border: '#E2E8F0', Icon: Clock };
+    const normalizedStatus = status ? status.charAt(0).toUpperCase() + status.slice(1).toLowerCase() : '';
+    const c = statusConfig[normalizedStatus] || statusConfig[status] || { bg: '#F1F5F9', color: '#475569', border: '#E2E8F0', Icon: Clock };
     return (
       <span style={{
         display: 'inline-flex', alignItems: 'center', gap: '5px',
@@ -71,7 +73,7 @@ const QuotationList = ({ onLogout }) => {
         border: `1px solid ${c.border}`,
       }}>
         <c.Icon style={{ width: '12px', height: '12px' }} />
-        {status === 'Registration Completed' ? 'Approved' : status}
+        {normalizedStatus === 'Registration completed' ? 'Approved' : normalizedStatus}
       </span>
     );
   };
@@ -178,7 +180,7 @@ const QuotationList = ({ onLogout }) => {
                           <Download style={{ width: '14px', height: '14px' }} />
                         </a>
                         <select
-                          value={q.status === 'Registration Completed' ? 'Approved' : q.status}
+                          value={q.status ? q.status.toLowerCase() : ''}
                           onChange={e => handleUpdateStatus(q.id || q._id, e.target.value)}
                           className="input"
                           style={{
@@ -186,11 +188,11 @@ const QuotationList = ({ onLogout }) => {
                             fontWeight: 600, cursor: 'pointer',
                           }}
                         >
-                          {q.status === 'draft' && <option value="draft">Draft</option>}
-                          <option value="Submitted">Submitted</option>
-                          <option value="Processing">Processing</option>
-                          <option value="Approved">Approved</option>
-                          <option value="Rejected">Rejected</option>
+                          {q.status?.toLowerCase() === 'draft' && <option value="draft">Draft</option>}
+                          <option value="submitted">Submitted</option>
+                          <option value="processing">Processing</option>
+                          <option value="approved">Approved</option>
+                          <option value="rejected">Rejected</option>
                         </select>
                       </div>
                     </td>
