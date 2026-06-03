@@ -5,3 +5,5 @@ build
 .temp/
 supabase.exe
 supabase/.env.secrets
+Backend/supabase/.env.secrets
+Backend/supabase/.temp/
