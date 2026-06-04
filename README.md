@@ -2,7 +2,7 @@
 
 A comprehensive Customer Relationship Management (CRM) system designed specifically for solar energy companies. This platform manages the entire lifecycle of a solar installation project, from initial customer registration and quotation generation to installation, financing, and subsidy processing.
 
-![ProbFixora CRM](frontend/public/logo.png) <!-- Update with an actual screenshot or logo path if available -->
+![ProbFixora CRM](frontend/public/logo1.png) <!-- Update with an actual screenshot or logo path if available -->
 
 ## Key Features
 
