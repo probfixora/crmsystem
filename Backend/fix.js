@@ -1,5 +1,8 @@
 const fs = require('fs');
-let c = fs.readFileSync('supabase/functions/workflow/index.ts', 'utf8');
-c = c.replace(/\\\$\\\{/g, '${');
-c = c.replace(/\\\`/g, '`');
-fs.writeFileSync('supabase/functions/workflow/index.ts', c);
+const path = 'supabase/functions/workflow/index.ts';
+let c = fs.readFileSync(path, 'utf8');
+
+c = c.split('\\${').join('${');
+c = c.split('\\`').join('`');
+
+fs.writeFileSync(path, c);

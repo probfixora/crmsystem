@@ -586,19 +586,19 @@ serve(async (req: Request) => {
 <body>
 <div class="wrapper">
   <div class="header">
-    <div class="logo"><img src="data:image/png;base64,\${logoBase64}" alt="ProbFixora Logo" style="height:45px; width:auto;"/></div>
+    <div class="logo"><img src="data:image/png;base64,${logoBase64}" alt="ProbFixora Logo" style="height:45px; width:auto;"/></div>
     <h1>🎉 Registration Successful!</h1>
   </div>
   <div class="body">
-    <p style="font-size:15px;color:#334155;line-height:1.7">Dear <strong>\${customerName}</strong>,</p>
+    <p style="font-size:15px;color:#334155;line-height:1.7">Dear <strong>${customerName}</strong>,</p>
     <p style="font-size:14px;color:#475569;margin-top:12px;line-height:1.7">
       Your solar project has been registered with ProbFixora. Our team has verified your documents and your case is now officially in our system.
     </p>
     <div class="tracking-box">
       <p style="font-size:12px;font-weight:700;color:#b45309;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Your Tracking ID</p>
-      <div class="tracking-id">\${trackingId}</div>
-      <p style="font-size:12px;color:#92400e;margin-top:8px">Registered on \${registeredOn}</p>
-      <a href="\${trackingUrl}" class="track-btn">Track My Project →</a>
+      <div class="tracking-id">${trackingId}</div>
+      <p style="font-size:12px;color:#92400e;margin-top:8px">Registered on ${registeredOn}</p>
+      <a href="${trackingUrl}" class="track-btn">Track My Project →</a>
     </div>
     <p style="font-size:13px;color:#475569;line-height:1.7">You can use this Tracking ID anytime to check the real-time status of your solar installation project.</p>
     <table class="steps">
@@ -612,13 +612,13 @@ serve(async (req: Request) => {
       </tr>
     </table>
     <div class="help">
-      <strong>Need Help?</strong> Contact us at <strong>info@probfixora.com</strong> and quote your Tracking ID <strong>\${trackingId}</strong>.
+      <strong>Need Help?</strong> Contact us at <strong>info@probfixora.com</strong> and quote your Tracking ID <strong>${trackingId}</strong>.
     </div>
     <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-top:24px">Warm regards,<br/><strong style="color:#b45309">ProbFixora Team</strong><br/><span style="color:#94a3b8;font-size:12px">Lucknow, Uttar Pradesh, India</span></p>
   </div>
   <div class="footer">
-    <div class="logo"><img src="data:image/png;base64,\${logoBase64}" alt="ProbFixora Logo" style="height:35px; width:auto;"/></div>
-    <p>© \${new Date().getFullYear()} ProbFixora. All rights reserved.<br/>Lucknow, UP 226001<br/><a href="https://probfixora.com">probfixora.com</a> &nbsp;|&nbsp; <a href="mailto:info@probfixora.com">info@probfixora.com</a></p>
+    <div class="logo"><img src="data:image/png;base64,${logoBase64}" alt="ProbFixora Logo" style="height:35px; width:auto;"/></div>
+    <p>© ${new Date().getFullYear()} ProbFixora. All rights reserved.<br/>Lucknow, UP 226001<br/><a href="https://probfixora.com">probfixora.com</a> &nbsp;|&nbsp; <a href="mailto:info@probfixora.com">info@probfixora.com</a></p>
     <p style="margin-top:8px;color:#cbd5e1;font-size:10px">This is an automated message. Please do not reply to this email.</p>
   </div>
 </div>
@@ -628,7 +628,7 @@ serve(async (req: Request) => {
             const payload = {
               sender:      { name: "ProbFixora", email: senderEmail },
               to:          [{ email: customerEmail, name: customerName }],
-              subject:     `Registration Confirmed — Your Tracking ID: \${trackingId}`,
+              subject:     `Registration Confirmed — Your Tracking ID: ${trackingId}`,
               htmlContent,
             };
 
@@ -766,11 +766,11 @@ serve(async (req: Request) => {
           <body style="margin:0;padding:0;font-family:'Inter',sans-serif;background-color:#f8fafc;">
             <div style="max-width:600px;margin:20px auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.05);">
               <div style="background:linear-gradient(135deg,#ca8a04,#eab308);padding:40px 20px;text-align:center;">
-                <img src="data:image/png;base64,\${logoBase64}" alt="ProbFixora Logo" style="height:45px; width:auto; margin-bottom:12px;"/>
+                <img src="data:image/png;base64,${logoBase64}" alt="ProbFixora Logo" style="height:45px; width:auto; margin-bottom:12px;"/>
                 <h1 style="color:#fff;margin:0;font-size:24px;">Project Completed Successfully!</h1>
               </div>
               <div style="padding:40px 32px;">
-                <p style="font-size:16px;color:#334155;margin-top:0;">Dear \${customerName},</p>
+                <p style="font-size:16px;color:#334155;margin-top:0;">Dear ${customerName},</p>
                 <p style="font-size:15px;color:#475569;line-height:1.6;">
                   We are thrilled to announce that your solar plant installation and all associated processes (including Govt Approvals and Subsidy Registration) have been successfully completed!
                 </p>
