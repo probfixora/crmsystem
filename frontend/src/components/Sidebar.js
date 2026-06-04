@@ -182,6 +182,18 @@ const Sidebar = ({ onLogout }) => {
   const roleColor  = ROLE_COLORS[userRole] || '#2563EB';
   const roleLabel  = getRoleLabel(userRole);
 
+  const allItems = groups.flatMap(g => g.items);
+  const homeItem = allItems.find(i => i.name === 'Dashboard') || { name: 'Dashboard', path: '/' };
+  const clientsItem = allItems.find(i => i.name === 'Customers' || i.name === 'All Customers') || { name: 'Clients', path: '/cases' };
+  const teamItem = allItems.find(i => i.name === 'Team');
+  
+  const primaryItems = [
+    { ...homeItem, label: 'Home', icon: 'ti ti-home' },
+    { ...clientsItem, label: 'Clients', icon: 'ti ti-users' },
+  ];
+  if (teamItem) primaryItems.push({ ...teamItem, label: 'Team', icon: 'ti ti-users-group' });
+  const primaryPaths = primaryItems.map(i => i.path);
+
   /* ── Sync profile from DB on mount ──────────────────────────────────── */
   useEffect(() => {
     const isSimulating = localStorage.getItem('simulating') === 'true';
@@ -369,7 +381,7 @@ const Sidebar = ({ onLogout }) => {
         <SidebarContent />
       </aside>
 
-      {/* ── Mobile: Slide-in sidebar drawer ─────────────────────────────── */}
+      {/* ── Mobile: Bottom Sheet Account Drawer ────────────────────────── */}
       {mobileOpen && (
         <>
           {/* Backdrop */}
@@ -384,108 +396,117 @@ const Sidebar = ({ onLogout }) => {
             }}
           />
 
-          {/* Drawer panel */}
+          {/* Drawer panel (Bottom Sheet) */}
           <aside style={{
-            position: 'fixed', top: 0, left: 0, bottom: 0, zIndex: 160,
-            width: '260px',
+            position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 160,
+            maxHeight: '85vh',
             background: 'var(--sidebar-bg)',
-            border: '1px solid var(--color-border)',
-            borderLeft: 'none',
-            borderRadius: '0 var(--radius-xl) var(--radius-xl) 0',
+            borderTop: '1px solid var(--color-border)',
+            borderRadius: 'var(--radius-xl) var(--radius-xl) 0 0',
             boxShadow: 'var(--shadow-xl)',
             display: 'flex', flexDirection: 'column',
-            animation: 'slideInLeft 0.25s cubic-bezier(0.16,1,0.3,1) both',
+            animation: 'slideUp 0.3s cubic-bezier(0.16,1,0.3,1) both',
           }}>
-            {/* Close button */}
-            <button
-              onClick={() => setMobileOpen(false)}
-              style={{
-                position: 'absolute', top: '12px', right: '12px',
-                background: 'var(--surface-2)', border: '1px solid var(--color-border)',
-                borderRadius: 'var(--radius-sm)', width: '28px', height: '28px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                cursor: 'pointer', color: 'var(--text-3)',
-                transition: 'all 0.15s ease',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'var(--surface-3)'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'var(--surface-2)'; }}
-              title="Close menu"
-            >
-              <i className="ti ti-x" style={{ fontSize: '14px' }} />
-            </button>
+            {/* Handle / Drag indicator */}
+            <div style={{ width: '40px', height: '5px', background: 'var(--border-2)', borderRadius: '10px', margin: '12px auto' }} />
 
-            <SidebarContent />
+            <div style={{ padding: '0 20px 20px', overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
+              {/* Profile Header */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', paddingBottom: '16px', borderBottom: '1px solid var(--color-border)' }}>
+                <div style={{
+                  width: '48px', height: '48px', borderRadius: '50%', background: roleColor,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: '#fff', fontSize: '18px', fontWeight: 700
+                }}>
+                  {initials}
+                </div>
+                <div>
+                  <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--text-1)', margin: 0 }}>{userName}</h3>
+                  <p style={{ fontSize: '13px', color: 'var(--text-3)', margin: 0, textTransform: 'capitalize' }}>{roleLabel}</p>
+                </div>
+              </div>
+
+              {/* Remaining Nav Items */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '24px' }}>
+                <p className="nav-section-label" style={{ marginBottom: '8px' }}>Menu</p>
+                {allItems.filter(item => !primaryPaths.includes(item.path)).map(item => {
+                  const isActive = !item.external && location.pathname === item.path;
+                  const iconCls = ICONS[item.name] || 'ti ti-point';
+                  return (
+                    <button
+                      key={item.name}
+                      onClick={() => handleNav(item)}
+                      className={`nav-item${isActive ? ' active' : ''}`}
+                      style={{ padding: '12px 14px' }}
+                    >
+                      <i className={iconCls} style={{ fontSize: '18px', width: '22px', textAlign: 'center', flexShrink: 0 }} />
+                      <span style={{ flex: 1, fontSize: '15px' }}>{item.name}</span>
+                      {item.external && <i className="ti ti-external-link" style={{ fontSize: '14px', opacity: 0.5 }} />}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Settings & Support */}
+              <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid var(--color-border)' }}>
+                <button onClick={() => { setMobileOpen(false); navigate('/profile'); }} className="nav-item" style={{ padding: '12px 14px' }}>
+                  <i className="ti ti-user-circle" style={{ fontSize: '18px', width: '22px', textAlign: 'center' }} />
+                  <span style={{ fontSize: '15px' }}>Profile</span>
+                </button>
+                <button onClick={() => {
+                  const next = !(localStorage.getItem('theme') === 'dark');
+                  localStorage.setItem('theme', next ? 'dark' : 'light');
+                  document.documentElement.setAttribute('data-theme', next ? 'dark' : '');
+                  window.dispatchEvent(new Event('themechange')); // optional
+                }} className="nav-item" style={{ padding: '12px 14px' }}>
+                  <i className="ti ti-moon" style={{ fontSize: '18px', width: '22px', textAlign: 'center' }} />
+                  <span style={{ fontSize: '15px' }}>Toggle Theme</span>
+                </button>
+                <button onClick={() => { setMobileOpen(false); navigate('/support'); }} className="nav-item" style={{ padding: '12px 14px' }}>
+                  <i className="ti ti-headset" style={{ fontSize: '18px', width: '22px', textAlign: 'center' }} />
+                  <span style={{ fontSize: '15px' }}>Support</span>
+                </button>
+                <button onClick={() => { setMobileOpen(false); onLogout(); }} className="nav-item" style={{ color: 'var(--color-danger)', padding: '12px 14px' }}>
+                  <i className="ti ti-logout" style={{ fontSize: '18px', width: '22px', textAlign: 'center' }} />
+                  <span style={{ fontSize: '15px' }}>Sign Out</span>
+                </button>
+              </div>
+            </div>
           </aside>
         </>
       )}
 
       {/* ── Mobile Bottom Navigation ─────────────────────────────────────── */}
       <nav className="mobile-bottom-nav" role="navigation" aria-label="Mobile navigation">
-        {groups.flatMap(g => g.items).filter(i => !i.external).map((item) => {
+        {primaryItems.map((item) => {
           const isActive = location.pathname === item.path;
-          const iconCls  = ICONS[item.name] || 'ti ti-point';
           return (
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
               className={`mobile-nav-btn ${isActive ? 'active' : ''}`}
-              aria-label={item.name}
-              aria-current={isActive ? 'page' : undefined}
             >
               <div className="mobile-nav-icon-wrap">
-                <i className={iconCls} style={{ fontSize: '19px' }} />
+                <i className={item.icon} style={{ fontSize: '20px' }} />
               </div>
-              <span className="mobile-nav-label">
-                {item.name
-                  .replace('Dashboard', 'Home')
-                  .replace('All Customers', 'Clients')
-                  .replace('Quotation Form', 'Quote')
-                  .replace('Quotation List', 'Quotes')
-                  .replace('Approved Customer', 'Approved')
-                  .replace('Create Case', 'New')
-                  .replace('Finance', 'Finance')
-                }
-              </span>
+              <span className="mobile-nav-label">{item.label}</span>
             </button>
           );
         })}
 
-        {/* Tracking shortcut (external) — shown in bottom nav for sales/admin */}
-        {groups.flatMap(g => g.items).some(i => i.external && i.name === 'Tracking') && (
-          <button
-            className="mobile-nav-btn"
-            onClick={() => window.open('/track', '_blank', 'noopener,noreferrer')}
-            aria-label="Tracking"
-          >
-            <div className="mobile-nav-icon-wrap">
-              <i className="ti ti-map-pin" style={{ fontSize: '19px' }} />
-            </div>
-            <span className="mobile-nav-label">Track</span>
-          </button>
-        )}
-
-        {/* Profile tab */}
+        {/* Account Tab */}
         <button
-          onClick={() => navigate('/profile')}
-          className={`mobile-nav-btn ${location.pathname === '/profile' ? 'active' : ''}`}
-          aria-label="Profile"
-          aria-current={location.pathname === '/profile' ? 'page' : undefined}
+          onClick={() => setMobileOpen(true)}
+          className={`mobile-nav-btn ${mobileOpen ? 'active' : ''}`}
         >
-          <div
-            className="mobile-nav-icon-wrap"
-            style={{
-              background: location.pathname === '/profile' ? roleColor : undefined,
-              borderRadius: 'var(--radius-md)',
-              width: '36px', height: '28px',
-            }}
-          >
-            <span style={{
-              fontSize: '11px', fontWeight: 800, color: location.pathname === '/profile' ? '#fff' : 'currentColor',
-            }}>
-              {initials}
-            </span>
+          <div className="mobile-nav-icon-wrap" style={{ 
+            background: mobileOpen ? roleColor : undefined, 
+            borderRadius: '50%', width: '30px', height: '30px', 
+            color: mobileOpen ? '#fff' : 'inherit'
+          }}>
+            <i className="ti ti-user" style={{ fontSize: '19px' }} />
           </div>
-          <span className="mobile-nav-label">Profile</span>
+          <span className="mobile-nav-label">Account</span>
         </button>
       </nav>
     </>
