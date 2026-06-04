@@ -860,7 +860,7 @@ serve(async (req: Request) => {
       const customerName   = q.customer_name || "";
       const nameSlug       = customerName.replace(/\s+/g, "").toUpperCase().replace(/[^A-Z]/g, "").substring(0, 4).padEnd(4, "X");
       const randomDigits   = String(Math.floor(10000 + Math.random() * 90000));
-      const trackingIdVal  = `Probfixora-${nameSlug}-${randomDigits}`; 
+      const trackingIdVal  = `PROB-${nameSlug}-${randomDigits}`; 
 
       const now            = new Date();
       const dd   = String(now.getDate()).padStart(2, "0");

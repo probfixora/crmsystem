@@ -387,7 +387,7 @@ serve(async (req: Request) => {
       const customerName   = body.customerName || "";
       const nameSlug       = customerName.replace(/\s+/g, "").toUpperCase().replace(/[^A-Z]/g, "").substring(0, 4).padEnd(4, "X");
       const randomDigits   = String(Math.floor(10000 + Math.random() * 90000));
-      const trackingIdVal  = `ProbFixora-${nameSlug}-${randomDigits}`; // e.g. ProbFixora-RAME-94721
+      const trackingIdVal  = `PROB-${nameSlug}-${randomDigits}`; // e.g. PROB-RAME-94721
 
       // ── Generate Customer ID: [NAME4]-[DDMMYYYY]-[XXXXX] ─────────────────
       const now            = new Date();
