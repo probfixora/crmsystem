@@ -73,11 +73,6 @@ for (const [stage, roles] of Object.entries(stageToAllowedRole)) {
 }
 
 // ─── CORS headers ─────────────────────────────────────────────────────────────
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-  "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-};
 
 // ─── Helper: verify JWT and get user profile ──────────────────────────────────
 async function getUser(req: Request, supabase: ReturnType<typeof createClient>) {
