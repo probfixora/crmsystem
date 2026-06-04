@@ -76,12 +76,16 @@ const Dashboard = ({ onLogout, title = 'Dashboard', roleBadge, viewAsUserId, vie
                 banking:            ['Bank & Finance'],
                 inventory:          ['Sent to Store'],
                 field_installation: ['Installation Started', 'Plant Activated'],
+                electrical:         ['Govt Approvals Pending'],
+                technical:          ['QA Verified'],
+                accounts:           ['Accounts Verified'],
                 subsidy:            ['Sent to Subsidy', 'Subsidy Registration Completed'],
+                customer_service:   ['Post-Installation Service'],
               }[userRole] || [];
               const fullPipeline = [
                 'Registration Done','Phone Verification Done','Bank & Finance',
                 'Sent to Store','Installation Started','Govt Approvals Pending','Plant Activated',
-                'Sent to Subsidy','Subsidy Registration Completed','Completed',
+                'QA Verified','Accounts Verified','Sent to Subsidy','Subsidy Registration Completed','Post-Installation Service','Completed',
               ];
               const myLastIdx = Math.max(...myStages.map(s => fullPipeline.indexOf(s)));
               const active    = rawCases.filter(c => myStages.includes(c.current_stage ?? c.currentStage));
@@ -262,7 +266,19 @@ const Dashboard = ({ onLogout, title = 'Dashboard', roleBadge, viewAsUserId, vie
     ],
     registration: [
       { label: 'Pending Registration', val: cases.filter(c => c.currentStage === 'Registration Done').length, color: '#6366f1', icon: Clock },
-      { label: 'Registration Delayed', val: cases.filter(c => c.currentStage === 'Registration Done' && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
+      { label: 'Pending Verification', val: cases.filter(c => c.currentStage === 'Phone Verification Done').length, color: '#10b981', icon: Clock },
+      { label: 'Registration Delayed', val: cases.filter(c => (c.currentStage === 'Registration Done' || c.currentStage === 'Phone Verification Done') && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
+    ],
+    technical: [
+      { label: 'Pending QA', val: cases.filter(c => c.currentStage === 'QA Verified').length, color: '#3b82f6', icon: CheckCircle2 },
+      { label: 'Delayed QA', val: cases.filter(c => c.currentStage === 'QA Verified' && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
+    ],
+    accounts: [
+      { label: 'Pending Payments', val: cases.filter(c => c.currentStage === 'Accounts Verified').length, color: '#10b981', icon: Zap },
+      { label: 'Delayed Payments', val: cases.filter(c => c.currentStage === 'Accounts Verified' && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
+    ],
+    customer_service: [
+      { label: 'Pending Service', val: cases.filter(c => c.currentStage === 'Post-Installation Service').length, color: '#8b5cf6', icon: Clock },
     ],
   };
   const myWidgets = deptWidgets[userRole] || [];
