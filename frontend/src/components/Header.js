@@ -17,12 +17,12 @@ const roleStageMap = {
 };
 
 const Header = ({ title, subtitle, roleBadge, onLogout }) => {
-  const navigate  = useNavigate();
-  const [searchVal, setSearchVal]         = useState('');
-  const [showNotif, setShowNotif]         = useState(false);
+  const navigate = useNavigate();
+  const [searchVal, setSearchVal] = useState('');
+  const [showNotif, setShowNotif] = useState(false);
   const [notifications, setNotifications] = useState([]);
-  const [notifLoading, setNotifLoading]   = useState(false);
-  
+  const [notifLoading, setNotifLoading] = useState(false);
+
   // Persist read notifications locally per user so it survives refresh
   const currentUserId = localStorage.getItem('userId');
   const storageKey = currentUserId ? `readNotifs_${currentUserId}` : 'readNotifs';
@@ -39,9 +39,9 @@ const Header = ({ title, subtitle, roleBadge, onLogout }) => {
     localStorage.setItem(storageKey, JSON.stringify([...readIds]));
   }, [readIds, storageKey]);
 
-  const [darkMode, setDarkMode]           = useState(() => localStorage.getItem('theme') === 'dark');
-  const [liveProfile, setLiveProfile]     = useState(null);
-  const [showProfile, setShowProfile]     = useState(false);
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
+  const [liveProfile, setLiveProfile] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
   const [isRealtimeConnected, setIsRealtimeConnected] = useState(false);
   const profileRef = useRef(null);
   const channelRef = useRef(null); // Supabase Realtime channel reference
@@ -56,13 +56,13 @@ const Header = ({ title, subtitle, roleBadge, onLogout }) => {
   const unreadCount = Math.min(notifications.filter(n => !readIds.has(n.id)).length, 9);
   const notifRef = useRef(null);
 
-  const userRole  = localStorage.getItem('role') || 'user';
-  const [userName, setUserName]  = useState(localStorage.getItem('name') || 'User');
+  const userRole = localStorage.getItem('role') || 'user';
+  const [userName, setUserName] = useState(localStorage.getItem('name') || 'User');
   const roleLabel = roleBadge || (userRole.charAt(0).toUpperCase() + userRole.slice(1));
   const canCreate = userRole === 'registration';
-  const initials  = userName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+  const initials = userName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
 
-  const hour     = new Date().getHours();
+  const hour = new Date().getHours();
   const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
 
   const fetchNotifications = async () => {
@@ -154,7 +154,7 @@ const Header = ({ title, subtitle, roleBadge, onLogout }) => {
       .eq('id', userId)
       .single()
       .then(({ data }) => { if (data) setLiveProfile(data); })
-      .catch(() => {});
+      .catch(() => { });
   }, [showProfile]);
 
   useEffect(() => {
@@ -180,8 +180,8 @@ const Header = ({ title, subtitle, roleBadge, onLogout }) => {
   const timeAgo = (ts) => {
     if (!ts) return '';
     const diff = Math.floor((Date.now() - new Date(ts)) / 1000);
-    if (diff < 60)    return `${diff}s ago`;
-    if (diff < 3600)  return `${Math.floor(diff / 60)}m ago`;
+    if (diff < 60) return `${diff}s ago`;
+    if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
     if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
     return `${Math.floor(diff / 86400)}d ago`;
   };
@@ -189,8 +189,8 @@ const Header = ({ title, subtitle, roleBadge, onLogout }) => {
   const popoverJSX = showNotif && (
     <div style={{
       position: 'absolute', top: 'calc(100% + 10px)', right: 0,
-      width: '360px', maxWidth: 'calc(100vw - 32px)', background: 'var(--surface)', 
-      borderRadius: 'var(--radius-xl)', border: '1px solid var(--border)', 
+      width: '360px', maxWidth: 'calc(100vw - 32px)', background: 'var(--surface)',
+      borderRadius: 'var(--radius-xl)', border: '1px solid var(--border)',
       boxShadow: 'var(--shadow-elevation)', zIndex: 200, overflow: 'hidden',
       animation: 'scaleIn 0.2s cubic-bezier(0.16,1,0.3,1) both',
       transformOrigin: 'top right',
@@ -272,7 +272,7 @@ const Header = ({ title, subtitle, roleBadge, onLogout }) => {
               <div style={{
                 width: '32px', height: '32px', borderRadius: 'var(--radius-sm)', flexShrink: 0,
                 background: 'var(--surface)', border: '1px solid var(--border)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '11.5px', fontWeight: 800, color: 'var(--brand)',
                 boxShadow: 'var(--shadow-xs)'
               }}>
@@ -327,32 +327,38 @@ const Header = ({ title, subtitle, roleBadge, onLogout }) => {
   // PREMIUM HEADER — All Roles
   // ══════════════════════════════════════════════════════════════════
   return (
-      <header className="admin-header">
+    <header className="admin-header">
 
-        {/* ── Top row: Brand + Desktop Search + Controls (all in one row on both desktop and mobile) ── */}
-        <div className="admin-header-top">
+      {/* ── Top row: Brand + Desktop Search + Controls (all in one row on both desktop and mobile) ── */}
+      <div className="admin-header-top">
 
-          {/* Left: Branding */}
-          <div className="admin-brand" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <img src="/logo.png" alt={BRANDING.name} style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
-          </div>
+        {/* Left: Branding */}
+        <div className="admin-brand" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {/* Mobile: Larger Logo */}
+          <img className="mobile-only" src="/logo.png" alt={BRANDING.name} style={{ height: '44px', width: 'auto', objectFit: 'contain', marginLeft: '-4px' }} />
+          
+          {/* Desktop: Brand Text (like before) */}
+          <span className="hide-on-mobile" style={{ fontSize: '20px', fontWeight: 800, color: 'var(--color-primary)', letterSpacing: '-0.02em', fontFamily: 'Inter, sans-serif' }}>
+            {BRANDING.name}
+          </span>
+        </div>
 
-          {/* Center: Global Search Bar — hidden on mobile via CSS, shown on desktop */}
-          <form onSubmit={handleSearch} className="admin-search-form">
-            <Search style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', width: '18px', height: '18px', color: 'var(--text-4)', pointerEvents: 'none' }} />
-            <input
-              type="text"
-              value={searchVal}
-              onChange={e => setSearchVal(e.target.value)}
-              placeholder="Search accounts, documents, or IDs..."
-              className="admin-search-input"
-              onFocus={e => e.target.style.borderColor = 'var(--color-primary)'}
-              onBlur={e => e.target.style.borderColor = ''}
-            />
-          </form>
+        {/* Center: Global Search Bar — hidden on mobile via CSS, shown on desktop */}
+        <form onSubmit={handleSearch} className="admin-search-form">
+          <Search style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', width: '18px', height: '18px', color: 'var(--text-4)', pointerEvents: 'none' }} />
+          <input
+            type="text"
+            value={searchVal}
+            onChange={e => setSearchVal(e.target.value)}
+            placeholder="Search accounts, documents, or IDs..."
+            className="admin-search-input"
+            onFocus={e => e.target.style.borderColor = 'var(--color-primary)'}
+            onBlur={e => e.target.style.borderColor = ''}
+          />
+        </form>
 
-          {/* Right: Controls Panel */}
-          <div className="admin-controls">
+        {/* Right: Controls Panel */}
+        <div className="admin-controls">
 
           <button title="AI Assistant" className="admin-icon-btn">
             <Bot style={{ width: '22px', height: '22px', color: 'var(--text-3)' }} />
@@ -443,7 +449,7 @@ const Header = ({ title, subtitle, roleBadge, onLogout }) => {
                     onMouseEnter={e => e.currentTarget.style.background = 'var(--surface-2)'}
                     onMouseLeave={e => e.currentTarget.style.background = 'none'}>
                     <div style={{ width: '28px', height: '28px', borderRadius: 'var(--radius-xs)', background: 'var(--color-primary-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--color-primary)' }}><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--color-primary)' }}><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
                     </div>
                     View Profile
                   </button>
@@ -473,26 +479,26 @@ const Header = ({ title, subtitle, roleBadge, onLogout }) => {
             )}
           </div>{/* end profileRef */}
 
-          </div>{/* end admin-controls */}
+        </div>{/* end admin-controls */}
 
-        </div>{/* end admin-header-top */}
+      </div>{/* end admin-header-top */}
 
-        {/* ── Mobile Search Row (shown only on mobile below brand+controls row) ── */}
-        <form onSubmit={handleSearch} className="admin-search-form-mobile">
-          <Search style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', width: '17px', height: '17px', color: 'var(--text-4)', pointerEvents: 'none' }} />
-          <input
-            type="text"
-            value={searchVal}
-            onChange={e => setSearchVal(e.target.value)}
-            placeholder="Search..."
-            className="admin-search-input"
-            onFocus={e => e.target.style.borderColor = 'var(--color-primary)'}
-            onBlur={e => e.target.style.borderColor = ''}
-          />
-        </form>
+      {/* ── Mobile Search Row (shown only on mobile below brand+controls row) ── */}
+      <form onSubmit={handleSearch} className="admin-search-form-mobile">
+        <Search style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', width: '17px', height: '17px', color: 'var(--text-4)', pointerEvents: 'none' }} />
+        <input
+          type="text"
+          value={searchVal}
+          onChange={e => setSearchVal(e.target.value)}
+          placeholder="Search..."
+          className="admin-search-input"
+          onFocus={e => e.target.style.borderColor = 'var(--color-primary)'}
+          onBlur={e => e.target.style.borderColor = ''}
+        />
+      </form>
 
-      </header>
-    );
+    </header>
+  );
 };
 
 export default Header;
