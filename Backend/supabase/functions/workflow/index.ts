@@ -2,9 +2,16 @@
 // Handles ALL case operations — replaces Express caseController.js + caseRoutes.js
 // Deploy: supabase functions deploy workflow
 
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { logoBase64 } from "../quotation/logoBase64.ts";
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+};
+
 
 // ─── Workflow configuration ───────────────────────────────────────────────────
 
@@ -205,7 +212,7 @@ serve(async (req: Request) => {
       });
     }
 
-    // Try tracking_id column first (RBSC-RAME-94721 format), fallback to case_id (CASE-0001)
+    // Try tracking_id column first (ProbFixora-RAME-94721 format), fallback to case_id (CASE-0001)
     let data: any = null;
     let error: any = null;
 
@@ -385,7 +392,7 @@ serve(async (req: Request) => {
       const customerName   = body.customerName || "";
       const nameSlug       = customerName.replace(/\s+/g, "").toUpperCase().replace(/[^A-Z]/g, "").substring(0, 4).padEnd(4, "X");
       const randomDigits   = String(Math.floor(10000 + Math.random() * 90000));
-      const trackingIdVal  = `RBSC-${nameSlug}-${randomDigits}`; // e.g. RBSC-RAME-94721
+      const trackingIdVal  = `ProbFixora-${nameSlug}-${randomDigits}`; // e.g. ProbFixora-RAME-94721
 
       // ── Generate Customer ID: [NAME4]-[DDMMYYYY]-[XXXXX] ─────────────────
       const now            = new Date();
@@ -554,47 +561,44 @@ serve(async (req: Request) => {
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Registration Successful — RBSC Solar</title>
+  <title>Registration Successful — ProbFixora</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:Arial,Helvetica,sans-serif;background:#f0f4f8;color:#1a202c}
     .wrapper{max-width:640px;margin:32px auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.10)}
-    .header{background:linear-gradient(135deg,#1a1a5e,#2563EB);padding:32px 24px;text-align:center}
-    .logo{font-size:26px;font-weight:800;color:#fff;letter-spacing:-0.5px}
-    .logo span{color:#60a5fa}
+    .header{background:linear-gradient(135deg,#ca8a04,#eab308);padding:32px 24px;text-align:center}
+    .logo{margin-bottom:12px;}
     .header h1{color:#fff;font-size:20px;font-weight:700;margin-top:12px;line-height:1.3}
     .body{padding:32px 28px}
-    .tracking-box{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:2px solid #3b82f6;border-radius:10px;padding:20px;text-align:center;margin:24px 0}
-    .tracking-id{font-size:28px;font-weight:800;color:#1d4ed8;letter-spacing:2px;font-family:monospace}
-    .track-btn{display:inline-block;margin-top:14px;background:#2563EB;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px}
+    .tracking-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #eab308;border-radius:10px;padding:20px;text-align:center;margin:24px 0}
+    .tracking-id{font-size:28px;font-weight:800;color:#b45309;letter-spacing:2px;font-family:monospace}
+    .track-btn{display:inline-block;margin-top:14px;background:#b45309;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px}
     .steps{width:100%;border-collapse:collapse;margin:24px 0;table-layout:fixed}
     .step{text-align:center;padding:0 2px}
-    .step-dot{width:32px;height:32px;border-radius:50%;background:#2563EB;color:#fff;font-weight:700;font-size:13px;line-height:32px;margin:0 auto 6px}
+    .step-dot{width:32px;height:32px;border-radius:50%;background:#eab308;color:#fff;font-weight:700;font-size:13px;line-height:32px;margin:0 auto 6px}
     .step-label{font-size:11px;color:#64748b;font-weight:600;word-wrap:break-word}
     .help{background:#f8fafc;border-radius:8px;padding:16px;font-size:13px;color:#475569;margin-top:20px;line-height:1.6}
     .footer{background:#1e293b;padding:20px 24px;text-align:center}
-    .footer-logo{font-size:16px;font-weight:800;color:#fff;margin-bottom:8px}
-    .footer-logo span{color:#60a5fa}
     .footer p{color:#94a3b8;font-size:12px;line-height:1.7}
-    .footer a{color:#60a5fa;text-decoration:none}
+    .footer a{color:#eab308;text-decoration:none}
   </style>
 </head>
 <body>
 <div class="wrapper">
   <div class="header">
-    <div class="logo">RBSC <span>Solar</span></div>
+    <div class="logo"><img src="data:image/png;base64,\${logoBase64}" alt="ProbFixora Logo" style="height:45px; width:auto;"/></div>
     <h1>🎉 Registration Successful!</h1>
   </div>
   <div class="body">
-    <p style="font-size:15px;color:#334155;line-height:1.7">Dear <strong>${customerName}</strong>,</p>
+    <p style="font-size:15px;color:#334155;line-height:1.7">Dear <strong>\${customerName}</strong>,</p>
     <p style="font-size:14px;color:#475569;margin-top:12px;line-height:1.7">
-      Your solar project has been registered with RBSC Solar. Our team has verified your documents and your case is now officially in our system.
+      Your solar project has been registered with ProbFixora. Our team has verified your documents and your case is now officially in our system.
     </p>
     <div class="tracking-box">
-      <p style="font-size:12px;font-weight:700;color:#1e40af;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Your Tracking ID</p>
-      <div class="tracking-id">${trackingId}</div>
-      <p style="font-size:12px;color:#6b7280;margin-top:8px">Registered on ${registeredOn}</p>
-      <a href="${trackingUrl}" class="track-btn">Track My Project →</a>
+      <p style="font-size:12px;font-weight:700;color:#b45309;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Your Tracking ID</p>
+      <div class="tracking-id">\${trackingId}</div>
+      <p style="font-size:12px;color:#92400e;margin-top:8px">Registered on \${registeredOn}</p>
+      <a href="\${trackingUrl}" class="track-btn">Track My Project →</a>
     </div>
     <p style="font-size:13px;color:#475569;line-height:1.7">You can use this Tracking ID anytime to check the real-time status of your solar installation project.</p>
     <table class="steps">
@@ -608,13 +612,13 @@ serve(async (req: Request) => {
       </tr>
     </table>
     <div class="help">
-      <strong>Need Help?</strong> Contact us at <strong>info@rbscsolar.com</strong> and quote your Tracking ID <strong>${trackingId}</strong>.
+      <strong>Need Help?</strong> Contact us at <strong>info@probfixora.com</strong> and quote your Tracking ID <strong>\${trackingId}</strong>.
     </div>
-    <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-top:24px">Warm regards,<br/><strong style="color:#1a1a5e">RBSC Solar Team</strong><br/><span style="color:#94a3b8;font-size:12px">Lucknow, Uttar Pradesh, India</span></p>
+    <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-top:24px">Warm regards,<br/><strong style="color:#b45309">ProbFixora Team</strong><br/><span style="color:#94a3b8;font-size:12px">Lucknow, Uttar Pradesh, India</span></p>
   </div>
   <div class="footer">
-    <div class="footer-logo">RBSC <span>Solar</span></div>
-    <p>© ${new Date().getFullYear()} RBSC Associates. All rights reserved.<br/>Office No. 11, Bhopal House Lalbagh, Hazratganj, Lucknow 226001<br/><a href="https://rbscsolar.com">rbscsolar.com</a> &nbsp;|&nbsp; <a href="mailto:info@rbscsolar.com">info@rbscsolar.com</a></p>
+    <div class="logo"><img src="data:image/png;base64,\${logoBase64}" alt="ProbFixora Logo" style="height:35px; width:auto;"/></div>
+    <p>© \${new Date().getFullYear()} ProbFixora. All rights reserved.<br/>Lucknow, UP 226001<br/><a href="https://probfixora.com">probfixora.com</a> &nbsp;|&nbsp; <a href="mailto:info@probfixora.com">info@probfixora.com</a></p>
     <p style="margin-top:8px;color:#cbd5e1;font-size:10px">This is an automated message. Please do not reply to this email.</p>
   </div>
 </div>
@@ -622,9 +626,9 @@ serve(async (req: Request) => {
 </html>`;
 
             const payload = {
-              sender:      { name: "RBSC Solar", email: senderEmail },
+              sender:      { name: "ProbFixora", email: senderEmail },
               to:          [{ email: customerEmail, name: customerName }],
-              subject:     `Registration Confirmed — Your Tracking ID: ${trackingId}`,
+              subject:     `Registration Confirmed — Your Tracking ID: \${trackingId}`,
               htmlContent,
             };
 
@@ -635,7 +639,8 @@ serve(async (req: Request) => {
             });
 
             if (!res.ok) {
-              console.error(`[tracking_email] Brevo API error for case ${caseObj.id}: ${await res.text()}`);
+              const errTxt = await res.text();
+              console.error(`[tracking_email] Brevo API error for case ${caseObj.id}: ${errTxt}`);
             } else {
               const result = await res.json();
               console.log(`[tracking_email] ✅ Tracking ID email sent to ${customerEmail}. messageId: ${result.messageId}`);
@@ -760,23 +765,24 @@ serve(async (req: Request) => {
           <html>
           <body style="margin:0;padding:0;font-family:'Inter',sans-serif;background-color:#f8fafc;">
             <div style="max-width:600px;margin:20px auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.05);">
-              <div style="background:linear-gradient(135deg,#16a34a,#15803d);padding:40px 20px;text-align:center;">
+              <div style="background:linear-gradient(135deg,#ca8a04,#eab308);padding:40px 20px;text-align:center;">
+                <img src="data:image/png;base64,\${logoBase64}" alt="ProbFixora Logo" style="height:45px; width:auto; margin-bottom:12px;"/>
                 <h1 style="color:#fff;margin:0;font-size:24px;">Project Completed Successfully!</h1>
               </div>
               <div style="padding:40px 32px;">
-                <p style="font-size:16px;color:#334155;margin-top:0;">Dear ${customerName},</p>
+                <p style="font-size:16px;color:#334155;margin-top:0;">Dear \${customerName},</p>
                 <p style="font-size:15px;color:#475569;line-height:1.6;">
                   We are thrilled to announce that your solar plant installation and all associated processes (including Govt Approvals and Subsidy Registration) have been successfully completed!
                 </p>
                 <p style="font-size:15px;color:#475569;line-height:1.6;">
-                  Thank you for choosing RBSC Solar. You are now officially generating clean, renewable energy. Our Customer Service team will reach out to you every 3 months for a routine check-in and feedback.
+                  Thank you for choosing ProbFixora. You are now officially generating clean, renewable energy. Our Customer Service team will reach out to you every 3 months for a routine check-in and feedback.
                 </p>
                 <p style="font-size:15px;color:#475569;line-height:1.6;">
                   If you have any questions or require support, please don't hesitate to contact us.
                 </p>
                 <p style="font-size:13px;color:#4a5568;line-height:1.7;margin-top:30px;">
                   Warm regards,<br/>
-                  <strong style="color:#1a1a5e">RBSC Solar Team</strong><br/>
+                  <strong style="color:#b45309">ProbFixora Team</strong><br/>
                   Lucknow, Uttar Pradesh, India
                 </p>
               </div>
@@ -789,9 +795,9 @@ serve(async (req: Request) => {
               method: "POST",
               headers: { "api-key": brevoApiKey, "Content-Type": "application/json", "Accept": "application/json" },
               body: JSON.stringify({
-                sender: { name: "RBSC Solar", email: senderEmail },
+                sender: { name: "ProbFixora", email: senderEmail },
                 to: [{ email: customerEmail, name: customerName }],
-                subject: `Congratulations! Your RBSC Solar Project is Complete`,
+                subject: `Congratulations! Your ProbFixora Solar Project is Complete`,
                 htmlContent,
               }),
             });

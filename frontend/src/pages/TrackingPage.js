@@ -109,8 +109,8 @@ export default function TrackingPage() {
         @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.5;} }
         .tp-btn:hover:not(:disabled) { filter: brightness(1.08); transform: translateY(-1px); }
         .tp-btn { transition: all .15s; }
-        .tp-input:focus { outline: none; box-shadow: 0 0 0 3px rgba(26,26,94,.12); border-color: #1a1a5e; }
-        .chip:hover { background: #e8eaf6; border-color: #1a1a5e; cursor: pointer; }
+        .tp-input:focus { outline: none; box-shadow: 0 0 0 3px rgba(26,26,94,.12); border-color: #b45309; }
+        .chip:hover { background: #e8eaf6; border-color: #b45309; cursor: pointer; }
         .chip { transition: all .15s; }
         .feat-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(26,26,94,.10); }
         .feat-card { transition: all .2s; }
@@ -129,10 +129,10 @@ export default function TrackingPage() {
         .footer-heading { font-size: 12px; font-weight: 700; color: #94a3b8; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
         .footer-text { font-size: 13px; color: #64748b; line-height: 1.7; }
         .footer-link { display: flex; align-items: center; gap: 12px; color: #64748b; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-        .footer-link:hover { color: #1a1a5e; }
+        .footer-link:hover { color: #b45309; }
         .footer-link .mat { color: #94a3b8; font-size: 18px; font-variation-settings: 'FILL' 0; }
         .footer-bottom { border-top: 1px solid #f1f5f9; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; font-weight: 500; }
-        .header-title { font-weight: 800; font-size: 16px; color: #1a1a5e; letter-spacing: -.3px; }
+        .header-title { font-weight: 800; font-size: 16px; color: #b45309; letter-spacing: -.3px; }
         .track-btn-icon { display: none; }
         
         @media (max-width: 768px) {
@@ -173,13 +173,13 @@ export default function TrackingPage() {
           <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             {result && (
               <button onClick={() => { setResult(null); setError(''); setInputId(''); }}
-                style={{ background: 'none', border: 'none', color: '#1a1a5e', fontSize: 13, fontWeight: 600, cursor: 'pointer', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: 4 }}>
+                style={{ background: 'none', border: 'none', color: '#b45309', fontSize: 13, fontWeight: 600, cursor: 'pointer', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <span className="mat" style={{ fontSize: 18 }}>arrow_back</span>
                 <span className="track-btn-text">New Search</span>
               </button>
             )}
             <div style={{
-              background: '#1a1a5e', color: '#fff',
+              background: '#b45309', color: '#fff',
               borderRadius: 8, padding: '7px 16px',
               fontSize: 13, fontWeight: 700, letterSpacing: .3, display: 'flex', alignItems: 'center', justifyContent: 'center'
             }}>
@@ -199,7 +199,7 @@ export default function TrackingPage() {
 
               {/* LEFT — Navy */}
               <div className="hero-left" style={{
-                background: 'linear-gradient(145deg, #0f0f2d 0%, #1a1a5e 100%)',
+                background: 'linear-gradient(145deg, #0f0f2d 0%, #b45309 100%)',
                 padding: 'clamp(40px,6vw,80px) clamp(24px,5vw,64px)',
                 display: 'flex', flexDirection: 'column', justifyContent: 'center',
               }}>
@@ -250,7 +250,7 @@ export default function TrackingPage() {
                   </div>
 
                   <button className="tp-btn" onClick={() => handleTrack()} disabled={loading}
-                    style={{ width: '100%', padding: '14px', background: '#1a1a5e', color: '#fff', border: 'none', borderRadius: 10, fontWeight: 700, fontSize: 15, cursor: loading ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, opacity: loading ? .75 : 1, boxShadow: '0 4px 16px rgba(26,26,94,.25)' }}
+                    style={{ width: '100%', padding: '14px', background: '#b45309', color: '#fff', border: 'none', borderRadius: 10, fontWeight: 700, fontSize: 15, cursor: loading ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, opacity: loading ? .75 : 1, boxShadow: '0 4px 16px rgba(26,26,94,.25)' }}
                   >
                     {loading ? <div style={{ width: 18, height: 18, border: '2px solid rgba(255,255,255,.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin .7s linear infinite' }} /> : <span className="mat" style={{ fontSize: 20 }}>search</span>}
                     {loading ? 'Searching…' : 'Track Project'}
@@ -264,7 +264,7 @@ export default function TrackingPage() {
 
                   <p style={{ fontSize: 12, color: '#94a3b8', textAlign: 'center', marginTop: 20, lineHeight: 1.7 }}>
                     Your Tracking ID was sent to your registered email.<br />
-                    Format: <strong style={{ fontFamily: 'monospace', color: '#1a1a5e' }}>{BRANDING.caseIdPrefix}-NAME-00000</strong>
+                    Format: <strong style={{ fontFamily: 'monospace', color: '#b45309' }}>{BRANDING.caseIdPrefix}-NAME-00000</strong>
                   </p>
                 </div>
               </div>
@@ -282,7 +282,7 @@ export default function TrackingPage() {
                       width: 44, height: 44, borderRadius: 10,
                       background: '#eef0ff',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      marginBottom: 16, color: '#1a1a5e',
+                      marginBottom: 16, color: '#b45309',
                     }}>
                       <span className="mat" style={{ fontSize: 22 }}>{f.icon}</span>
                     </div>
@@ -308,7 +308,7 @@ export default function TrackingPage() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                   <span style={{
                     background: isCompleted ? '#dcfce7' : isDelayed ? '#fee2e2' : '#eef0ff',
-                    color: isCompleted ? '#15803d' : isDelayed ? '#dc2626' : '#1a1a5e',
+                    color: isCompleted ? '#15803d' : isDelayed ? '#dc2626' : '#b45309',
                     border: `1px solid ${isCompleted ? '#86efac' : isDelayed ? '#fca5a5' : '#c7d2fe'}`,
                     borderRadius: 20, padding: '3px 12px', fontSize: 12, fontWeight: 700,
                     display: 'flex', alignItems: 'center', gap: 5,
@@ -324,7 +324,7 @@ export default function TrackingPage() {
                   {BRANDING.name} Installation
                 </h2>
                 <p style={{ color: '#64748b', fontSize: 14 }}>
-                  Current Stage: <strong style={{ color: '#1a1a5e' }}>{result.current_stage}</strong>
+                  Current Stage: <strong style={{ color: '#b45309' }}>{result.current_stage}</strong>
                 </p>
               </div>
 
@@ -335,10 +335,10 @@ export default function TrackingPage() {
                 boxShadow: '0 2px 12px rgba(0,0,0,.06)',
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center', marginBottom: 6 }}>
-                  <span className="mat" style={{ fontSize: 18, color: '#1a1a5e' }}>calendar_month</span>
+                  <span className="mat" style={{ fontSize: 18, color: '#b45309' }}>calendar_month</span>
                   <span style={{ fontSize: 11, color: '#94a3b8', fontWeight: 600, textTransform: 'uppercase', letterSpacing: .8 }}>Progress</span>
                 </div>
-                <div style={{ fontSize: 28, fontWeight: 800, color: '#1a1a5e' }}>{pct}%</div>
+                <div style={{ fontSize: 28, fontWeight: 800, color: '#b45309' }}>{pct}%</div>
                 <div style={{ fontSize: 12, color: '#64748b' }}>Overall Complete</div>
               </div>
             </div>
@@ -352,7 +352,7 @@ export default function TrackingPage() {
                 {/* Milestones card */}
                 <div style={{ background: '#fff', border: '1px solid #e8eaf0', borderRadius: 14, padding: '24px', boxShadow: '0 2px 12px rgba(0,0,0,.04)' }}>
                   <h3 style={{ fontSize: 15, fontWeight: 700, color: '#0f0f23', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span className="mat" style={{ color: '#1a1a5e', fontSize: 20 }}>route</span>
+                    <span className="mat" style={{ color: '#b45309', fontSize: 20 }}>route</span>
                     Project Milestones
                   </h3>
 
@@ -360,7 +360,7 @@ export default function TrackingPage() {
                   <div style={{ height: 6, background: '#f1f5f9', borderRadius: 99, overflow: 'hidden', marginBottom: 28 }}>
                     <div style={{
                       height: '100%', width: `${pct}%`,
-                      background: isDelayed ? 'linear-gradient(90deg,#dc2626,#ef4444)' : 'linear-gradient(90deg,#1a1a5e,#16a34a)',
+                      background: isDelayed ? 'linear-gradient(90deg,#dc2626,#ef4444)' : 'linear-gradient(90deg,#b45309,#16a34a)',
                       borderRadius: 99, animation: 'barIn .9s ease both',
                     }} />
                   </div>
@@ -372,7 +372,7 @@ export default function TrackingPage() {
                         const done = idx < currentIdx;
                         const current = idx === currentIdx;
                         const future = idx > currentIdx;
-                        const bg = done ? '#16a34a' : current && isDelayed ? '#dc2626' : current ? '#1a1a5e' : '#e8eaf0';
+                        const bg = done ? '#16a34a' : current && isDelayed ? '#dc2626' : current ? '#b45309' : '#e8eaf0';
 
                         return (
                           <div key={s.key} className="timeline-item">
@@ -390,11 +390,11 @@ export default function TrackingPage() {
                                 {done ? 'check' : s.icon}
                               </span>
                             </div>
-                            <div className="timeline-item-text" style={{ fontWeight: current ? 700 : 500, color: future ? '#94a3b8' : done ? '#16a34a' : '#1a1a5e' }}>
+                            <div className="timeline-item-text" style={{ fontWeight: current ? 700 : 500, color: future ? '#94a3b8' : done ? '#16a34a' : '#b45309' }}>
                               {s.label}
                             </div>
                             {current && (
-                              <div className="timeline-badge" style={{ marginTop: 3, background: isDelayed ? '#dc2626' : '#1a1a5e', color: '#fff', fontSize: 8, fontWeight: 700, padding: '2px 6px', borderRadius: 99, textTransform: 'uppercase', letterSpacing: .5 }}>
+                              <div className="timeline-badge" style={{ marginTop: 3, background: isDelayed ? '#dc2626' : '#b45309', color: '#fff', fontSize: 8, fontWeight: 700, padding: '2px 6px', borderRadius: 99, textTransform: 'uppercase', letterSpacing: .5 }}>
                                 {isDelayed ? 'Delayed' : 'Active'}
                               </div>
                             )}
@@ -409,7 +409,7 @@ export default function TrackingPage() {
                 <div style={{ background: '#fff', border: '1px solid #e8eaf0', borderRadius: 14, padding: '24px', boxShadow: '0 2px 12px rgba(0,0,0,.04)' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
                     <h3 style={{ fontSize: 15, fontWeight: 700, color: '#0f0f23', display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <span className="mat" style={{ color: '#1a1a5e', fontSize: 20 }}>history</span>
+                      <span className="mat" style={{ color: '#b45309', fontSize: 20 }}>history</span>
                       Stage Activity
                     </h3>
                   </div>
@@ -426,9 +426,9 @@ export default function TrackingPage() {
                           )}
                           <div style={{
                             width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
-                            background: i === 0 ? '#1a1a5e' : '#f1f5f9',
+                            background: i === 0 ? '#b45309' : '#f1f5f9',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            border: `2px solid ${i === 0 ? '#1a1a5e' : '#e8eaf0'}`,
+                            border: `2px solid ${i === 0 ? '#b45309' : '#e8eaf0'}`,
                           }}>
                             <span className="mat" style={{ fontSize: 16, color: i === 0 ? '#fff' : '#16a34a' }}>
                               {i === 0 ? s.icon : 'check'}
@@ -452,7 +452,7 @@ export default function TrackingPage() {
 
                 {/* Need Help card */}
                 <div style={{
-                  background: '#1a1a5e',
+                  background: '#b45309',
                   borderRadius: 14, padding: '22px 18px',
                   color: '#fff',
                 }}>
@@ -462,11 +462,11 @@ export default function TrackingPage() {
                   </p>
                   <a href={`mailto:${BRANDING.supportEmail}`} style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-                    background: '#fff', color: '#1a1a5e',
+                    background: '#fff', color: '#b45309',
                     borderRadius: 8, padding: '10px 14px',
                     fontWeight: 700, fontSize: 13, textDecoration: 'none',
                   }}>
-                    <span className="mat" style={{ fontSize: 18, color: '#1a1a5e' }}>mail</span>
+                    <span className="mat" style={{ fontSize: 18, color: '#b45309' }}>mail</span>
                     Email Support
                   </a>
                 </div>
@@ -505,7 +505,7 @@ export default function TrackingPage() {
                       }}
                     />
                     <button className="tp-btn" onClick={() => handleTrack()}
-                      style={{ background: '#1a1a5e', color: '#fff', border: 'none', borderRadius: 7, padding: '8px 12px', cursor: 'pointer' }}>
+                      style={{ background: '#b45309', color: '#fff', border: 'none', borderRadius: 7, padding: '8px 12px', cursor: 'pointer' }}>
                       <span className="mat" style={{ fontSize: 18 }}>search</span>
                     </button>
                   </div>
@@ -550,7 +550,7 @@ export default function TrackingPage() {
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                 <span className="mat" style={{ color: '#94a3b8', fontSize: 18, marginTop: 2, fontVariationSettings: "'FILL' 0" }}>location_on</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                  <strong style={{ color: '#1a1a5e', fontSize: 14, fontWeight: 700 }}>New Delhi Headquarters</strong>
+                  <strong style={{ color: '#b45309', fontSize: 14, fontWeight: 700 }}>New Delhi Headquarters</strong>
                   <span className="footer-text">
                     Probfixora<br />
                     New Delhi, India<br />
