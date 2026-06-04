@@ -272,13 +272,16 @@ const Dashboard = ({ onLogout, title = 'Dashboard', roleBadge, viewAsUserId, vie
     technical: [
       { label: 'Pending QA', val: cases.filter(c => c.currentStage === 'QA Verified').length, color: '#3b82f6', icon: CheckCircle2 },
       { label: 'Delayed QA', val: cases.filter(c => c.currentStage === 'QA Verified' && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
+      { label: 'Completed QA', val: cases.filter(c => ['Accounts Verified', 'Sent to Subsidy', 'Subsidy Registration Completed', 'Post-Installation Service', 'Completed'].includes(c.currentStage) || c.status === 'Completed').length, color: '#10b981', icon: Zap },
     ],
     accounts: [
       { label: 'Pending Payments', val: cases.filter(c => c.currentStage === 'Accounts Verified').length, color: '#10b981', icon: Zap },
       { label: 'Delayed Payments', val: cases.filter(c => c.currentStage === 'Accounts Verified' && c.status === 'Delayed').length, color: '#f43f5e', icon: AlertTriangle },
+      { label: 'Completed Payments', val: cases.filter(c => ['Sent to Subsidy', 'Subsidy Registration Completed', 'Post-Installation Service', 'Completed'].includes(c.currentStage) || c.status === 'Completed').length, color: '#3b82f6', icon: CheckCircle2 },
     ],
     customer_service: [
       { label: 'Pending Service', val: cases.filter(c => c.currentStage === 'Post-Installation Service').length, color: '#8b5cf6', icon: Clock },
+      { label: 'Service Completed', val: cases.filter(c => c.status === 'Completed' || c.currentStage === 'Completed').length, color: '#10b981', icon: CheckCircle2 },
     ],
   };
   const myWidgets = deptWidgets[userRole] || [];

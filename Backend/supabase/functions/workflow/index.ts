@@ -261,7 +261,9 @@ serve(async (req: Request) => {
       if (effectiveRole !== "admin") {
         if (effectiveRole === "registration" || effectiveRole === "banking" ||
             effectiveRole === "inventory"     || effectiveRole === "field_installation" ||
-            effectiveRole === "subsidy"       || effectiveRole === "sales") {
+            effectiveRole === "subsidy"       || effectiveRole === "sales" ||
+            effectiveRole === "technical"     || effectiveRole === "accounts" ||
+            effectiveRole === "customer_service") {
           // These departments need full pipeline visibility:
           //   • Registration  — creates all cases, needs to track the whole journey
           //   • Banking       — tracks loan/cash approvals even after hand-off
@@ -269,6 +271,7 @@ serve(async (req: Request) => {
           //   • Field Install — installs plants; needs to see installed+completed cases
           //   • Subsidy       — registers subsidies; needs to see subsidy+completed cases
           //   • Sales         — creates quotations; needs to see their customers progress
+          //   • Technical/Accounts/Customer Service — needs to see completed cases for dashboards
           // Sensitive docs are still masked per-role via maskDocumentsForRole.
           // No stage restriction here — all cases are visible.
         } else {

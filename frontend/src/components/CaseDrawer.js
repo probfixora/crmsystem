@@ -94,10 +94,8 @@ const getTabs = (role) => {
   if (role === 'subsidy' || role === 'admin') {
     tabs.push({ id: 'subsidy', icon: FileCheck, label: 'Subsidy' });
   }
-  // Work Order / Job Sheet — field installation team + admin
-  if (role === 'field_installation' || role === 'admin') {
-    tabs.push({ id: 'work_order', icon: Printer, label: 'Job Sheet' });
-  }
+  // Work Order / Job Sheet — visible to all (useful for printing)
+  tabs.push({ id: 'work_order', icon: Printer, label: 'Job Sheet' });
   // Customer Feedback — admin only, shown on all cases (reads existing feedback)
   if (role === 'admin') {
     tabs.push({ id: 'feedback',          icon: Star,        label: 'Feedback' });
@@ -708,7 +706,7 @@ const CaseDrawer = ({ caseData, onClose, onRefresh }) => {
     toast.success('PDF ready — use Ctrl+P → Save as PDF');
   };
 
-  const isCompleted = caseData?.currentStage === 'Completed';
+  const isCompleted = normalized.status === 'Completed' || normalized.currentStage === 'Completed';
 
   /* ── Render ── */
   return (
