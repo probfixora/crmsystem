@@ -335,7 +335,7 @@ const Header = ({ title, subtitle, roleBadge, onLogout }) => {
         {/* Left: Branding */}
         <div className="admin-brand" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           {/* Mobile: Larger Logo */}
-          <img className="mobile-only" src="/logo.png" alt={BRANDING.name} style={{ height: '50px', width: 'auto', objectFit: 'contain', marginLeft: '-10px' }} />
+          <img className="mobile-only" src="/logo.png" alt={BRANDING.name} style={{ height: '50px', width: 'auto', objectFit: 'contain', marginLeft: '13px' }} />
           
           {/* Desktop: Brand Text (like before) */}
           <span className="hide-on-mobile" style={{ fontSize: '20px', fontWeight: 800, color: 'var(--color-primary)', letterSpacing: '-0.02em', fontFamily: 'Inter, sans-serif' }}>
